@@ -1,0 +1,33 @@
+{
+  "name": "ml-front-test",
+  "version": "1.0.0",
+  "description": "frontend test for mercadolibre",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolassigal/ml-front-test.git"
+  },
+  "author": {
+    "name": "Nicolas",
+    "lastname": "Sigal"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolassigal/ml-front-test/issues"
+  },
+  "homepage": "https://github.com/nicolassigal/ml-front-test#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "nodemon": "^1.18.3"
+  }
+}
