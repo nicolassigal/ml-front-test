@@ -10,7 +10,7 @@ import {
  } from './constants';
 
 const app = express(),
-    port = process.env.port || 3000,
+    port = process.env.port || 3200,
     router = express.Router(),
     author = packageJSON.author;
 
@@ -48,7 +48,7 @@ router.get('/items/:id', (req, res) => {
                      } else {
                         res.error({});
                      }
-                })
+                }).catch(error => res.json(error));
         })
         .catch(error => res.json(error));
 });
