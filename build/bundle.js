@@ -115,22 +115,26 @@ var _axios = __webpack_require__(12);
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _reactRouterDom = __webpack_require__(5);
+
+var _routes = __webpack_require__(8);
+
+var _routes2 = _interopRequireDefault(_routes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var API_ENDPOINT = 'http://localhost:3200/api';
-var port = process.env.port || 3000;
+var port = process.env.port || 5000;
 var app = (0, _express2.default)();
 var router = _express2.default.Router();
 app.use(_express2.default.static('public'));
 
 router.get('/', function (req, res) {
-    console.log('URL', req.url);
     var html = (0, _renderer2.default)(req, {});
     res.send(html);
 });
 
 router.get('/items', function (req, res) {
-    console.log('URL', req.url);
     var query = req.query.q || '';
     _axios2.default.get(API_ENDPOINT + '/items?q=' + query).then(function (response) {
         var html = (0, _renderer2.default)(req, response.data);
@@ -141,7 +145,6 @@ router.get('/items', function (req, res) {
 });
 
 router.get('/items/:id', function (req, res) {
-    console.log('URL', req.url);
     var id = req.params.id || '';
     _axios2.default.get(API_ENDPOINT + '/items/' + id).then(function (response) {
         var html = (0, _renderer2.default)(req, response.data);
@@ -198,18 +201,18 @@ var _routes = __webpack_require__(8);
 
 var _routes2 = _interopRequireDefault(_routes);
 
+var _App = __webpack_require__(13);
+
+var _App2 = _interopRequireDefault(_App);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (req, data) {
     var context = { data: data };
     var content = (0, _server.renderToString)(_react2.default.createElement(
         _reactRouterDom.StaticRouter,
-        { path: req.url, context: context },
-        _react2.default.createElement(
-            'div',
-            null,
-            (0, _reactRouterConfig.renderRoutes)(_routes2.default)
-        )
+        { location: req.url, context: {} },
+        _react2.default.createElement(_App2.default, null)
     ));
     return '\n    <html>\n        <head></head>\n        <body>\n            <div id="root">' + content + '</div>\n            <script>window.__INITIAL_DATA__ = ' + (0, _serializeJavascript2.default)(data) + '</script>\n            <script src="/bundle.js"></script>\n        </body>\n    </html>\n    ';
 };
@@ -246,10 +249,8 @@ module.exports = require("react-router-config");
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _HomePage = __webpack_require__(9);
 
@@ -273,20 +274,22 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = [_extends({}, _App2.default, {
-    routes: [{
-        path: '/',
-        component: _HomePage2.default,
-        exact: true
-    }, {
-        path: '/items',
-        component: _ProductsListPage2.default,
-        exact: true
-    }, {
-        path: '/items/:id',
-        component: _ProductDetailPage2.default
-    }]
-})];
+var Routes = [{
+  path: '/',
+  exact: true,
+  component: _HomePage2.default
+}, {
+  path: '/items',
+  component: _ProductsListPage2.default,
+  exact: true
+}, {
+  path: '/items/:id',
+  component: _ProductDetailPage2.default
+}, {
+  component: _HomePage2.default
+}];
+
+exports.default = Routes;
 
 /***/ }),
 /* 9 */
@@ -361,52 +364,51 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ProductDetailPage = function (_Component) {
-    _inherits(ProductDetailPage, _Component);
+var ProductsListPage = function (_Component) {
+    _inherits(ProductsListPage, _Component);
 
-    function ProductDetailPage(props) {
-        _classCallCheck(this, ProductDetailPage);
+    function ProductsListPage(props) {
+        _classCallCheck(this, ProductsListPage);
 
-        return _possibleConstructorReturn(this, (ProductDetailPage.__proto__ || Object.getPrototypeOf(ProductDetailPage)).call(this, props));
+        return _possibleConstructorReturn(this, (ProductsListPage.__proto__ || Object.getPrototypeOf(ProductsListPage)).call(this, props));
     }
 
-    _createClass(ProductDetailPage, [{
+    _createClass(ProductsListPage, [{
         key: 'componentDidMount',
-        value: function componentDidMount(props) {
-            if (window && window.__INITIAL_DATA__) {
-                this.setState(window.__INITIAL_DATA__);
-            } else {
-                this.setState.apply(this, _toConsumableArray(props.staticContext.data));
-            }
-            console.log(this.state);
+        value: function componentDidMount() {
+            console.log('props', this.props);
+            console.log('state', this.state);
         }
     }, {
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'h2',
+            var view = null;
+            if (this.state) {
+                view = _react2.default.createElement(
+                    'div',
                     null,
-                    'Products Detail Page'
-                )
-            );
+                    _react2.default.createElement(
+                        'h2',
+                        null,
+                        'Products Detail Page'
+                    )
+                );
+            }
+
+            return view;
         }
     }]);
 
-    return ProductDetailPage;
+    return ProductsListPage;
 }(_react.Component);
 
-exports.default = ProductDetailPage;
+exports.default = ProductsListPage;
 
 /***/ }),
 /* 11 */
@@ -441,27 +443,46 @@ var ProductsListPage = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (ProductsListPage.__proto__ || Object.getPrototypeOf(ProductsListPage)).call(this, props));
 
-        var data = void 0;
-        if (window && window.__INITIAL_DATA__) {
-            data = window.__INITIAL_DATA__;
-            delete window.__INITIAL_DATA__;
-        } else {
-            data = props.staticContext.data;
-        }
-
-        _this.state = {
-            data: data
-        };
-
         _this.getProductList = _this.getProductList.bind(_this);
         return _this;
     }
 
     _createClass(ProductsListPage, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var data = void 0;
+            if (window && window.__INITIAL_DATA__) {
+                data = window.__INITIAL_DATA__;
+                delete window.__INITIAL_DATA__;
+            } else {
+                if (this.props.staticContext && this.props.staticContext.data) {
+                    data = this.props.staticContext;
+                } else {
+                    data = [];
+                }
+            }
+            this.setState({
+                data: data
+            });
+        }
+    }, {
         key: 'getProductList',
         value: function getProductList() {
-            //const { items } = this.state;
-            //return items.map(item => <li key={item.id}><a href={`/items/${item.id}`}>{item.title}</a></li>);
+            if (this.state && this.state.data) {
+                var items = this.state.data.items;
+
+                return items.map(function (item) {
+                    return _react2.default.createElement(
+                        'li',
+                        { key: item.id },
+                        _react2.default.createElement(
+                            'a',
+                            { href: '/items/' + item.id },
+                            item.title
+                        )
+                    );
+                });
+            }
         }
     }, {
         key: 'render',
@@ -517,23 +538,45 @@ var _SearchBox2 = _interopRequireDefault(_SearchBox);
 
 var _reactRouterConfig = __webpack_require__(7);
 
+var _HomePage = __webpack_require__(9);
+
+var _HomePage2 = _interopRequireDefault(_HomePage);
+
+var _ProductsListPage = __webpack_require__(11);
+
+var _ProductsListPage2 = _interopRequireDefault(_ProductsListPage);
+
+var _ProductDetailPage = __webpack_require__(10);
+
+var _ProductDetailPage2 = _interopRequireDefault(_ProductDetailPage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var App = function App(_ref) {
-    var route = _ref.route;
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-    console.log('route', route.routes);
+var App = function App(_ref) {
+    var props = _objectWithoutProperties(_ref, []);
+
+    console.log(props);
     return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(_SearchBox2.default, null),
-        (0, _reactRouterConfig.renderRoutes)(route.routes)
+        _react2.default.createElement(
+            _reactRouterDom.Switch,
+            null,
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _HomePage2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/items', exact: true, render: function render(props) {
+                    return _react2.default.createElement(_ProductsListPage2.default, props);
+                } }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/items/:id', render: function render(props) {
+                    return _react2.default.createElement(_ProductDetailPage2.default, props);
+                } })
+        )
     );
 };
 
-exports.default = {
-    component: App
-};
+exports.default = App;
 
 /***/ }),
 /* 14 */
@@ -581,7 +624,7 @@ var SearchBox = function (_Component) {
         key: 'handleSubmit',
         value: function handleSubmit(evt) {
             evt.preventDefault();
-            return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/items?q=' + this.state.searchQuery });
+            window.location = '/items?q=' + this.state.searchQuery;
         }
     }, {
         key: 'handleChange',
@@ -627,3 +670,4 @@ module.exports = require("cors");
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=bundle.js.map

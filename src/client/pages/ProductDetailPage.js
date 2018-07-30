@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
 
-class ProductDetailPage extends Component {
+class ProductsListPage extends Component {
     constructor(props) {
         super(props);
     }
-    componentDidMount(props) {
-        if(window && window.__INITIAL_DATA__) {
-            this.setState(window.__INITIAL_DATA__);
-        } else {
-            this.setState(...props.staticContext.data);
-        }
-        console.log(this.state);
+
+    componentDidMount() {
+        console.log(this.props);
+
     }
-    render() {
-        return (
+
+    render () {
+        let view = null;
+        if(this.state) {
+            view = (
             <div>
                 <h2>Products Detail Page</h2>
             </div>
-        );
+            );
+        }
+
+        return view;
     }
 }
 
-export default ProductDetailPage;
+export default ProductsListPage;

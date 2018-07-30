@@ -3,13 +3,14 @@ import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import { renderRoutes } from 'react-router-config';
-import routes from '../../shared/routes';
+import Routes from '../../shared/routes';
+import App from '../../shared/App';
 
 export default (req, data) => {
     const context = { data }
     const content = renderToString(
-        <StaticRouter path={req.url} context={context}>
-            <div>{renderRoutes(routes)}</div>
+        <StaticRouter location={req.url} context={{}}>
+            <App />
         </StaticRouter>
         );
     return `

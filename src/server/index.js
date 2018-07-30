@@ -4,21 +4,21 @@ import renderer from './helpers/renderer';
 import path from 'path';
 import cors from 'cors';
 import axios from 'axios';
+import { matchPath } from 'react-router-dom';
+import Routes from '../shared/routes';
 
 const API_ENDPOINT = 'http://localhost:3200/api';
-const port = process.env.port || 3000;
+const port = process.env.port || 5000;
 const app = express();
 const router = express.Router();
 app.use(express.static('public'));
 
 router.get('/', (req, res) => {
-    console.log('URL', req.url);
     const html = renderer(req, {});
     res.send(html);
 });
 
 router.get('/items', (req, res) => {
-    console.log('URL', req.url);
     const query = req.query.q || '';
     axios.get(`${API_ENDPOINT}/items?q=${query}`)
     .then(response => {
@@ -29,7 +29,6 @@ router.get('/items', (req, res) => {
 });
 
 router.get('/items/:id', (req, res) => {
-    console.log('URL', req.url);
     const id = req.params.id || '';
     axios.get(`${API_ENDPOINT}/items/${id}`)
     .then(response => {

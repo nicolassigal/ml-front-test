@@ -8,7 +8,7 @@ const config = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, '../public')
     },
-    devtool: 'eval-source-map'
+    devtool: 'source-map'
 }
 
 module.exports = merge(baseConfig, config);

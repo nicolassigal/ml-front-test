@@ -3,32 +3,39 @@ import React, { Component } from 'react';
 class ProductsListPage extends Component {
     constructor(props) {
         super(props);
-        let data;
-        if(window && window.__INITIAL_DATA__) {
-            data = window.__INITIAL_DATA__;
-            delete window.__INITIAL_DATA__;
-        } else {
-            data = props.staticContext.data;
-        }
-
-        this.state = {
-            data,
-        }
-
         this.getProductList = this.getProductList.bind(this);
     }
 
-    getProductList() {
-        //const { items } = this.state;
-        //return items.map(item => <li key={item.id}><a href={`/items/${item.id}`}>{item.title}</a></li>);
+    componentDidMount() {
+        let data;
+        if (window && window.__INITIAL_DATA__) {
+          data = window.__INITIAL_DATA__;
+          delete window.__INITIAL_DATA__;
+
+        } else {
+            if (this.props.staticContext && this.props.staticContext.data) {
+                data = this.props.staticContext;
+            } else {
+                data = [];
+            }  
+        }
+        this.setState({
+            data,
+        })
     }
 
+    getProductList() {
+        if(this.state && this.state.data) {
+            const {items} = this.state.data;
+            return items.map(item => <li key={item.id}><a href={`/items/${item.id}`}>{item.title}</a></li>);
+        }
+    }
     render () {
         return (
             <div>
                 <h2>Products List Page</h2>
                 <ul>
-                    { this.getProductList() }
+                   {this.getProductList()}
                 </ul>
             </div>
         );

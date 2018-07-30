@@ -11,7 +11,7 @@ class SearchBox extends Component {
     }
     handleSubmit(evt) {
         evt.preventDefault();
-        return <Redirect to={`/items?q=${this.state.searchQuery}`}/>;
+        window.location = `/items?q=${this.state.searchQuery}`;
     }
 
     handleChange (evt) {

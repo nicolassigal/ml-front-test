@@ -9,6 +9,7 @@ const config = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, '../build')
     },
+    devtool: 'source-map',
     externals: [webpackNodeExternals()]
 }
 
