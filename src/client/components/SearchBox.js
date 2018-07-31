@@ -1,32 +1,20 @@
-import { Redirect } from 'react-router-dom';
-import React, {Component} from 'react';
+import React from 'react';
 
-class SearchBox extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {searchQuery: ''}
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleSubmit(evt) {
+const SearchBox = props => {
+    let searchQuery = null;
+    const handleSubmit = evt => {
         evt.preventDefault();
-        window.location = `/items?q=${this.state.searchQuery}`;
+        window.location = `/items?q=${searchQuery}`;
     }
 
-    handleChange (evt) {
-        this.setState({searchQuery: evt.target.value});
-    }
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text"  value={this.state.searchQuery}  onChange={this.handleChange}/>
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <form  onSubmit={handleSubmit}>
+                <input type="text"  ref={(input) => { searchQuery = input }}/>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    );
 }
 
 export default SearchBox;

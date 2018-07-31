@@ -1,27 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ProductsListPage extends Component {
-    constructor(props) {
-        super(props);
+const ProductsListPage = props => {
+    let view = null;
+    if(props) {
+        const { item } = props;
+        view = (
+        <div>
+            <h2>Products Detail Page</h2>
+            <p>
+                { item.description }
+            </p>
+        </div>
+        );
     }
 
-    componentDidMount() {
-        console.log(this.props);
-
-    }
-
-    render () {
-        let view = null;
-        if(this.state) {
-            view = (
-            <div>
-                <h2>Products Detail Page</h2>
-            </div>
-            );
-        }
-
-        return view;
-    }
+    return view;
 }
 
 export default ProductsListPage;

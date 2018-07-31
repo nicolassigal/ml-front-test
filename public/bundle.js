@@ -11010,57 +11010,35 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var ProductsListPage = function ProductsListPage(props) {
+    var view = null;
+    if (props) {
+        var item = props.item;
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ProductsListPage = function (_Component) {
-    _inherits(ProductsListPage, _Component);
-
-    function ProductsListPage(props) {
-        _classCallCheck(this, ProductsListPage);
-
-        return _possibleConstructorReturn(this, (ProductsListPage.__proto__ || Object.getPrototypeOf(ProductsListPage)).call(this, props));
+        view = _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+                'h2',
+                null,
+                'Products Detail Page'
+            ),
+            _react2.default.createElement(
+                'p',
+                null,
+                item.description
+            )
+        );
     }
 
-    _createClass(ProductsListPage, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            console.log('props', this.props);
-            console.log('state', this.state);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var view = null;
-            if (this.state) {
-                view = _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        'Products Detail Page'
-                    )
-                );
-            }
-
-            return view;
-        }
-    }]);
-
-    return ProductsListPage;
-}(_react.Component);
+    return view;
+};
 
 exports.default = ProductsListPage;
 
@@ -11075,91 +11053,50 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var ProductsListPage = function ProductsListPage(props) {
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+    var getProductList = function getProductList() {
+        var items = props.items;
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ProductsListPage = function (_Component) {
-    _inherits(ProductsListPage, _Component);
-
-    function ProductsListPage(props) {
-        _classCallCheck(this, ProductsListPage);
-
-        var _this = _possibleConstructorReturn(this, (ProductsListPage.__proto__ || Object.getPrototypeOf(ProductsListPage)).call(this, props));
-
-        _this.getProductList = _this.getProductList.bind(_this);
-        return _this;
-    }
-
-    _createClass(ProductsListPage, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var data = void 0;
-            if (window && window.__INITIAL_DATA__) {
-                data = window.__INITIAL_DATA__;
-                delete window.__INITIAL_DATA__;
-            } else {
-                if (this.props.staticContext && this.props.staticContext.data) {
-                    data = this.props.staticContext;
-                } else {
-                    data = [];
-                }
-            }
-            this.setState({
-                data: data
-            });
-        }
-    }, {
-        key: 'getProductList',
-        value: function getProductList() {
-            if (this.state && this.state.data) {
-                var items = this.state.data.items;
-
-                return items.map(function (item) {
-                    return _react2.default.createElement(
-                        'li',
-                        { key: item.id },
-                        _react2.default.createElement(
-                            'a',
-                            { href: '/items/' + item.id },
-                            item.title
-                        )
-                    );
-                });
-            }
-        }
-    }, {
-        key: 'render',
-        value: function render() {
+        return items.map(function (item) {
             return _react2.default.createElement(
-                'div',
-                null,
+                'li',
+                { key: item.id },
                 _react2.default.createElement(
-                    'h2',
-                    null,
-                    'Products List Page'
-                ),
-                _react2.default.createElement(
-                    'ul',
-                    null,
-                    this.getProductList()
+                    'a',
+                    { href: '/items/' + item.id },
+                    item.title
                 )
             );
-        }
-    }]);
+        });
+    };
 
-    return ProductsListPage;
-}(_react.Component);
+    var view = null;
+    if (props) {
+        view = _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+                'h2',
+                null,
+                'Products List Page'
+            ),
+            _react2.default.createElement(
+                'ul',
+                null,
+                getProductList()
+            )
+        );
+    }
+
+    return view;
+};
 
 exports.default = ProductsListPage;
 
@@ -12894,12 +12831,7 @@ var _ProductDetailPage2 = _interopRequireDefault(_ProductDetailPage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-var App = function App(_ref) {
-    var props = _objectWithoutProperties(_ref, []);
-
-    console.log(props);
+var App = function App(props) {
     return _react2.default.createElement(
         'div',
         null,
@@ -12908,10 +12840,10 @@ var App = function App(_ref) {
             _reactRouterDom.Switch,
             null,
             _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _HomePage2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/items', exact: true, render: function render(props) {
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/items', exact: true, render: function render() {
                     return _react2.default.createElement(_ProductsListPage2.default, props);
                 } }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/items/:id', render: function render(props) {
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/items/:id', render: function render() {
                     return _react2.default.createElement(_ProductDetailPage2.default, props);
                 } })
         )
@@ -12931,70 +12863,37 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _reactRouterDom = __webpack_require__(35);
-
 var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var SearchBox = function SearchBox(props) {
+    var searchQuery = null;
+    var handleSubmit = function handleSubmit(evt) {
+        evt.preventDefault();
+        console.log(searchQuery);
+        //window.location = `/items?q=${searchQuery}`;
+    };
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SearchBox = function (_Component) {
-    _inherits(SearchBox, _Component);
-
-    function SearchBox(props) {
-        _classCallCheck(this, SearchBox);
-
-        var _this = _possibleConstructorReturn(this, (SearchBox.__proto__ || Object.getPrototypeOf(SearchBox)).call(this, props));
-
-        _this.state = { searchQuery: '' };
-
-        _this.handleChange = _this.handleChange.bind(_this);
-        _this.handleSubmit = _this.handleSubmit.bind(_this);
-        return _this;
-    }
-
-    _createClass(SearchBox, [{
-        key: 'handleSubmit',
-        value: function handleSubmit(evt) {
-            evt.preventDefault();
-            window.location = '/items?q=' + this.state.searchQuery;
-        }
-    }, {
-        key: 'handleChange',
-        value: function handleChange(evt) {
-            this.setState({ searchQuery: evt.target.value });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'form',
-                    { onSubmit: this.handleSubmit },
-                    _react2.default.createElement('input', { type: 'text', value: this.state.searchQuery, onChange: this.handleChange }),
-                    _react2.default.createElement(
-                        'button',
-                        { type: 'submit' },
-                        'Search'
-                    )
-                )
-            );
-        }
-    }]);
-
-    return SearchBox;
-}(_react.Component);
+    return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+            "form",
+            { onSubmit: handleSubmit },
+            _react2.default.createElement("input", { type: "text", ref: function ref(input) {
+                    searchQuery = input;
+                } }),
+            _react2.default.createElement(
+                "button",
+                { type: "submit" },
+                "Search"
+            )
+        )
+    );
+};
 
 exports.default = SearchBox;
 
