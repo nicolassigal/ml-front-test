@@ -1,11 +1,8 @@
 import express from 'express';
 import React from 'react';
 import renderer from './helpers/renderer';
-import path from 'path';
 import cors from 'cors';
 import axios from 'axios';
-import { matchPath } from 'react-router-dom';
-import Routes from '../shared/routes';
 
 const API_ENDPOINT = 'http://localhost:3200/api';
 const port = process.env.port || 5000;
@@ -14,7 +11,7 @@ const router = express.Router();
 app.use(express.static('public'));
 
 router.get('/', (req, res) => {
-    const html = renderer(req, {});
+    const html = renderer(req, { searchQuery: '' }, 'Mercado Libre Argentina');
     res.send(html);
 });
 
@@ -22,7 +19,10 @@ router.get('/items', (req, res) => {
     const query = req.query.q || '';
     axios.get(`${API_ENDPOINT}/items?q=${query}`)
     .then(response => {
-        const html = renderer(req, response.data);
+        response.data.searchQuery = query;
+        const category = response.data.categories[0];
+        const title = `${query} - ${category} en Mercado Libre Argentina`;
+        const html = renderer(req, response.data, title);
         res.send(html);
     })
     .catch(err => console.log(err));
@@ -32,13 +32,31 @@ router.get('/items/:id', (req, res) => {
     const id = req.params.id || '';
     axios.get(`${API_ENDPOINT}/items/${id}`)
     .then(response => {
-        const html = renderer(req, response.data);
+        response.data.searchQuery = '';
+        const productTitle = response.data.item.title;
+        const productPrice = response.data.item.price.amount;
+        const currency = getCurrency(response.data.item.price.currency);
+        const title = `${productTitle} - ${currency} ${productPrice} en Mercado Libre Argentina`;
+        const html = renderer(req, response.data, title);
         res.send(html);
     })
     .catch(err => console.log(err));
 });
 
+router.get('*', (req, res) => {
+    data = { searchQuery: '' };
+    const html = renderer(req, data, 'Mercado Libre Argentina - Dónde comprar y vender de todo');
+    res.send(html);
+});
 
+function getCurrency (currency) {
+    switch(currency) {
+        case 'ARS':
+            return '$';
+        default:
+            return '$';
+    }
+}
 
 app.use(cors());
 app.use('/', router);

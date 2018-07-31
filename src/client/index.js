@@ -1,9 +1,8 @@
-import { renderRoutes } from 'react-router-config';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import Routes from '../shared/routes';
 import App from '../shared/App';
+import './scss/styles.scss';
 
 ReactDOM.hydrate(
   <BrowserRouter>

@@ -1,12 +1,10 @@
-import serialize from 'serialize-javascript';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
-import { renderRoutes } from 'react-router-config';
-import Routes from '../../shared/routes';
+import serialize from 'serialize-javascript';
 import App from '../../shared/App';
 
-export default (req, data) => {
+export default (req, data, title) => {
     const context = { data }
     const content = renderToString(
         <StaticRouter location={req.url} context={{}}>
@@ -15,7 +13,10 @@ export default (req, data) => {
         );
     return `
     <html>
-        <head></head>
+        <head>
+            <title>${title}</title>
+            <link rel="stylesheet" type="text/css" href="/styles.css" />
+        </head>
         <body>
             <div id="root">${content}</div>
             <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>

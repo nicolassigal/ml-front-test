@@ -1,8 +1,7 @@
-import HomePage from '../client/pages/HomePage';
-import ProductDetailPage from '../client/pages/ProductDetailPage';
-import ProductsListPage from '../client/pages/ProductsListPage';
-import axios from 'axios';
-import App from './App';
+import ProductDetailPage from '../client/pages/ProductDetail/ProductDetailPage';
+import ProductsListPage from '../client/pages/ProductsList/ProductsListPage';
+import NotFoundPage from '../client/pages/NotFound/NotFoundPage';
+import HomePage from '../client/pages/Home/HomePage';
 
 const Routes = [
       {
@@ -20,7 +19,9 @@ const Routes = [
         component: ProductDetailPage,
       },
       {
-        component: HomePage
+        path: '*',
+        exact: true,
+        component: NotFoundPage
       }
     ];
 

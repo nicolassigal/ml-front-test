@@ -5,8 +5,7 @@ const ProductsListPage = props => {
     if(props) {
         const { item } = props;
         view = (
-        <div>
-            <h2>Products Detail Page</h2>
+        <div className="product-detail">
             <p>
                 { item.description }
             </p>

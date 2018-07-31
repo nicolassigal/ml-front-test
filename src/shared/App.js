@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
-import SearchBox from '../client/components/SearchBox';
-import { renderRoutes } from 'react-router-config';
-import HomePage from '../client/pages/HomePage';
-import ProductsListPage from '../client/pages/ProductsListPage';
-import ProductDetailPage from '../client/pages/ProductDetailPage';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import SearchBox from '../client/components/SearchBox/SearchBox';
+import Routes from './routes';
+
 const App = (props) => {
     return (
         <div>
-            <SearchBox />
+            <SearchBox searchQuery={props.searchQuery}/>
             <Switch>
-                <Route path='/' exact={true} component={HomePage}/>
-                <Route path='/items' exact={true} render={() => <ProductsListPage {...props}/>}/>
-                <Route path='/items/:id' render={() => <ProductDetailPage {...props}/>}/>
+            {Routes.map(({ path, component: Comp, exact }, i) => {
+                if(Comp) {
+                    return <Route key={i} path={path} exact={exact} render={ ()=> <Comp {...props} /> }/>
+                }
+            }                            
+            )}
             </Switch>
         </div>
     );

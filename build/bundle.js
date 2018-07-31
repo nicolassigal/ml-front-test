@@ -103,23 +103,13 @@ var _renderer = __webpack_require__(3);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _path = __webpack_require__(15);
-
-var _path2 = _interopRequireDefault(_path);
-
-var _cors = __webpack_require__(16);
+var _cors = __webpack_require__(15);
 
 var _cors2 = _interopRequireDefault(_cors);
 
-var _axios = __webpack_require__(12);
+var _axios = __webpack_require__(16);
 
 var _axios2 = _interopRequireDefault(_axios);
-
-var _reactRouterDom = __webpack_require__(5);
-
-var _routes = __webpack_require__(8);
-
-var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -130,14 +120,17 @@ var router = _express2.default.Router();
 app.use(_express2.default.static('public'));
 
 router.get('/', function (req, res) {
-    var html = (0, _renderer2.default)(req, {});
+    var html = (0, _renderer2.default)(req, { searchQuery: '' }, 'Mercado Libre Argentina');
     res.send(html);
 });
 
 router.get('/items', function (req, res) {
     var query = req.query.q || '';
     _axios2.default.get(API_ENDPOINT + '/items?q=' + query).then(function (response) {
-        var html = (0, _renderer2.default)(req, response.data);
+        response.data.searchQuery = query;
+        var category = response.data.categories[0];
+        var title = query + ' - ' + category + ' en Mercado Libre Argentina';
+        var html = (0, _renderer2.default)(req, response.data, title);
         res.send(html);
     }).catch(function (err) {
         return console.log(err);
@@ -147,12 +140,32 @@ router.get('/items', function (req, res) {
 router.get('/items/:id', function (req, res) {
     var id = req.params.id || '';
     _axios2.default.get(API_ENDPOINT + '/items/' + id).then(function (response) {
-        var html = (0, _renderer2.default)(req, response.data);
+        response.data.searchQuery = '';
+        var productTitle = response.data.item.title;
+        var productPrice = response.data.item.price.amount;
+        var currency = getCurrency(response.data.item.price.currency);
+        var title = productTitle + ' - ' + currency + ' ' + productPrice + ' en Mercado Libre Argentina';
+        var html = (0, _renderer2.default)(req, response.data, title);
         res.send(html);
     }).catch(function (err) {
         return console.log(err);
     });
 });
+
+router.get('*', function (req, res) {
+    data = { searchQuery: '' };
+    var html = (0, _renderer2.default)(req, data, 'Mercado Libre Argentina - Dónde comprar y vender de todo');
+    res.send(html);
+});
+
+function getCurrency(currency) {
+    switch (currency) {
+        case 'ARS':
+            return '$';
+        default:
+            return '$';
+    }
+}
 
 app.use((0, _cors2.default)());
 app.use('/', router);
@@ -183,10 +196,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _serializeJavascript = __webpack_require__(4);
-
-var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
-
 var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
@@ -195,11 +204,9 @@ var _reactRouterDom = __webpack_require__(5);
 
 var _server = __webpack_require__(6);
 
-var _reactRouterConfig = __webpack_require__(7);
+var _serializeJavascript = __webpack_require__(4);
 
-var _routes = __webpack_require__(8);
-
-var _routes2 = _interopRequireDefault(_routes);
+var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
 var _App = __webpack_require__(13);
 
@@ -207,14 +214,14 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (req, data) {
+exports.default = function (req, data, title) {
     var context = { data: data };
     var content = (0, _server.renderToString)(_react2.default.createElement(
         _reactRouterDom.StaticRouter,
         { location: req.url, context: {} },
         _react2.default.createElement(_App2.default, data)
     ));
-    return '\n    <html>\n        <head></head>\n        <body>\n            <div id="root">' + content + '</div>\n            <script>window.__INITIAL_DATA__ = ' + (0, _serializeJavascript2.default)(data) + '</script>\n            <script src="/bundle.js"></script>\n        </body>\n    </html>\n    ';
+    return '\n    <html>\n        <head>\n            <title>' + title + '</title>\n            <link rel="stylesheet" type="text/css" href="/styles.css" />\n        </head>\n        <body>\n            <div id="root">' + content + '</div>\n            <script>window.__INITIAL_DATA__ = ' + (0, _serializeJavascript2.default)(data) + '</script>\n            <script src="/bundle.js"></script>\n        </body>\n    </html>\n    ';
 };
 
 /***/ }),
@@ -236,12 +243,7 @@ module.exports = require("react-router-dom");
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router-config");
-
-/***/ }),
+/* 7 */,
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -252,25 +254,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _HomePage = __webpack_require__(9);
-
-var _HomePage2 = _interopRequireDefault(_HomePage);
-
-var _ProductDetailPage = __webpack_require__(10);
+var _ProductDetailPage = __webpack_require__(9);
 
 var _ProductDetailPage2 = _interopRequireDefault(_ProductDetailPage);
 
-var _ProductsListPage = __webpack_require__(11);
+var _ProductsListPage = __webpack_require__(10);
 
 var _ProductsListPage2 = _interopRequireDefault(_ProductsListPage);
 
-var _axios = __webpack_require__(12);
+var _NotFoundPage = __webpack_require__(11);
 
-var _axios2 = _interopRequireDefault(_axios);
+var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
 
-var _App = __webpack_require__(13);
+var _HomePage = __webpack_require__(12);
 
-var _App2 = _interopRequireDefault(_App);
+var _HomePage2 = _interopRequireDefault(_HomePage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -286,67 +284,15 @@ var Routes = [{
   path: '/items/:id',
   component: _ProductDetailPage2.default
 }, {
-  component: _HomePage2.default
+  path: '*',
+  exact: true,
+  component: _NotFoundPage2.default
 }];
 
 exports.default = Routes;
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(2);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var HomePage = function (_Component) {
-    _inherits(HomePage, _Component);
-
-    function HomePage() {
-        _classCallCheck(this, HomePage);
-
-        return _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).apply(this, arguments));
-    }
-
-    _createClass(HomePage, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'h2',
-                    null,
-                    'Home Page'
-                )
-            );
-        }
-    }]);
-
-    return HomePage;
-}(_react.Component);
-
-exports.default = HomePage;
-
-/***/ }),
-/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -368,17 +314,70 @@ var ProductsListPage = function ProductsListPage(props) {
         var item = props.item;
 
         view = _react2.default.createElement(
-            'div',
-            null,
+            "div",
+            { className: "product-detail" },
             _react2.default.createElement(
-                'h2',
-                null,
-                'Products Detail Page'
-            ),
-            _react2.default.createElement(
-                'p',
+                "p",
                 null,
                 item.description
+            )
+        );
+    }
+
+    return view;
+};
+
+exports.default = ProductsListPage;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProductsListPage = function ProductsListPage(props) {
+    var view = null;
+
+    var getProductList = function getProductList() {
+        var items = props.items;
+
+        return items.map(function (item) {
+            return _react2.default.createElement(
+                "a",
+                { key: item.id, href: "/items/" + item.id },
+                _react2.default.createElement(
+                    "li",
+                    { className: "products-list__row" },
+                    _react2.default.createElement("img", { src: item.picture, alt: item.title }),
+                    _react2.default.createElement(
+                        "p",
+                        null,
+                        item.title
+                    )
+                )
+            );
+        });
+    };
+
+    if (props) {
+        view = _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(
+                "ul",
+                { className: "products-list" },
+                getProductList()
             )
         );
     }
@@ -405,52 +404,47 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ProductsListPage = function ProductsListPage(props) {
-
-    var getProductList = function getProductList() {
-        var items = props.items;
-
-        return items.map(function (item) {
-            return _react2.default.createElement(
-                'li',
-                { key: item.id },
-                _react2.default.createElement(
-                    'a',
-                    { href: '/items/' + item.id },
-                    item.title
-                )
-            );
-        });
-    };
-
-    var view = null;
-    if (props) {
-        view = _react2.default.createElement(
-            'div',
+var NotFoundPage = function NotFoundPage() {
+    return _react2.default.createElement(
+        "div",
+        { className: "not-found" },
+        _react2.default.createElement(
+            "h2",
             null,
-            _react2.default.createElement(
-                'h2',
-                null,
-                'Products List Page'
-            ),
-            _react2.default.createElement(
-                'ul',
-                null,
-                getProductList()
-            )
-        );
-    }
-
-    return view;
+            " Parece que esta p\xE1gina no existe"
+        ),
+        _react2.default.createElement(
+            "a",
+            { href: "/" },
+            " Ir a la p\xE1gina principal "
+        )
+    );
 };
 
-exports.default = ProductsListPage;
+exports.default = NotFoundPage;
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("axios");
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HomePage = function HomePage(props) {
+    return _react2.default.createElement('div', null);
+};
+
+exports.default = HomePage;
 
 /***/ }),
 /* 13 */
@@ -473,19 +467,9 @@ var _SearchBox = __webpack_require__(14);
 
 var _SearchBox2 = _interopRequireDefault(_SearchBox);
 
-var _reactRouterConfig = __webpack_require__(7);
+var _routes = __webpack_require__(8);
 
-var _HomePage = __webpack_require__(9);
-
-var _HomePage2 = _interopRequireDefault(_HomePage);
-
-var _ProductsListPage = __webpack_require__(11);
-
-var _ProductsListPage2 = _interopRequireDefault(_ProductsListPage);
-
-var _ProductDetailPage = __webpack_require__(10);
-
-var _ProductDetailPage2 = _interopRequireDefault(_ProductDetailPage);
+var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -493,17 +477,21 @@ var App = function App(props) {
     return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_SearchBox2.default, null),
+        _react2.default.createElement(_SearchBox2.default, { searchQuery: props.searchQuery }),
         _react2.default.createElement(
             _reactRouterDom.Switch,
             null,
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _HomePage2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/items', exact: true, render: function render() {
-                    return _react2.default.createElement(_ProductsListPage2.default, props);
-                } }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/items/:id', render: function render() {
-                    return _react2.default.createElement(_ProductDetailPage2.default, props);
-                } })
+            _routes2.default.map(function (_ref, i) {
+                var path = _ref.path,
+                    Comp = _ref.component,
+                    exact = _ref.exact;
+
+                if (Comp) {
+                    return _react2.default.createElement(_reactRouterDom.Route, { key: i, path: path, exact: exact, render: function render() {
+                            return _react2.default.createElement(Comp, props);
+                        } });
+                }
+            })
         )
     );
 };
@@ -528,27 +516,14 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SearchBox = function SearchBox(props) {
-    var searchQuery = null;
-    var handleSubmit = function handleSubmit(evt) {
-        evt.preventDefault();
-        console.log(searchQuery);
-        //window.location = `/items?q=${searchQuery}`;
-    };
-
     return _react2.default.createElement(
-        "div",
-        null,
+        'div',
+        { className: 'search-box' },
         _react2.default.createElement(
-            "form",
-            { onSubmit: handleSubmit },
-            _react2.default.createElement("input", { type: "text", ref: function ref(input) {
-                    searchQuery = input;
-                } }),
-            _react2.default.createElement(
-                "button",
-                { type: "submit" },
-                "Search"
-            )
+            'form',
+            { method: 'GET', action: '/items', id: 'searchBox', autoComplete: 'off' },
+            _react2.default.createElement('input', { type: 'text', name: 'q', id: 'q', defaultValue: props.searchQuery || '' }),
+            _react2.default.createElement('input', { type: 'submit', value: 'Search' })
         )
     );
 };
@@ -559,13 +534,13 @@ exports.default = SearchBox;
 /* 15 */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("cors");
 
 /***/ }),
 /* 16 */
 /***/ (function(module, exports) {
 
-module.exports = require("cors");
+module.exports = require("axios");
 
 /***/ })
 /******/ ]);
