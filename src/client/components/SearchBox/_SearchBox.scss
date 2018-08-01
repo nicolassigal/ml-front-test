@@ -1,6 +1,6 @@
 .search-box {
     height: 54px;
-    background-color: $ml-color-yellow;
+    background-color: black;
     align-self: center;
     .row {
         align-items: center;
@@ -8,17 +8,21 @@
     }
     .ml-logo {
         grid-column: 2;
+        visibility: hidden;
     }
     form {
         margin: 0;
         grid-column: 3/12;
         align-self: center;
+        display: flex;
+        flex-direction: row;
         input[type="text"] {
-            grid-column: 1/12;
+            flex-grow: 1;
             height: 40px;
             padding: 10px;
             border-radius: 4px 0 0 4px;
             border: none;
+            font-size: 18px;
             &:focus, &:active, &:active:focus {
                 border: none;
                 outline: none;
@@ -30,7 +34,6 @@
         }
 
         button {
-            grid-column: 12;
             height: 40px;
             width: 40px;
             border-radius: 0 4px 4px 0;

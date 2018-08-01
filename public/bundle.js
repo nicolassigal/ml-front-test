@@ -105,7 +105,7 @@ var _App = __webpack_require__(65);
 
 var _App2 = _interopRequireDefault(_App);
 
-__webpack_require__(72);
+__webpack_require__(74);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10322,17 +10322,13 @@ var SearchBox = function SearchBox(props) {
                 _react2.default.createElement(
                     "form",
                     { method: "GET", action: "/items", id: "searchBox", autoComplete: "off" },
+                    _react2.default.createElement("input", { type: "text", placeholder: "Nunca dejes de buscar", name: "q", id: "q", defaultValue: props.searchQuery || '' }),
                     _react2.default.createElement(
-                        "div",
-                        { className: "row no-gutter" },
-                        _react2.default.createElement("input", { type: "text", placeholder: "Nunca dejes de buscar", name: "q", id: "q", defaultValue: props.searchQuery || '' }),
-                        _react2.default.createElement(
-                            "button",
-                            { type: "submit" },
-                            _react2.default.createElement("img", { src: "./../../assets/ic_Search.png",
-                                srcSet: "./../../assets/ic_Search.png 1x, ./../../assets/ic_Search@2x.png.png 2x",
-                                alt: "mercado libre logo" })
-                        )
+                        "button",
+                        { type: "submit" },
+                        _react2.default.createElement("img", { src: "./../../assets/ic_Search.png",
+                            srcSet: "./../../assets/ic_Search.png 1x, ./../../assets/ic_Search@2x.png.png 2x",
+                            alt: "mercado libre logo" })
                     )
                 )
             )
@@ -10361,11 +10357,11 @@ var _ProductsListPage = __webpack_require__(69);
 
 var _ProductsListPage2 = _interopRequireDefault(_ProductsListPage);
 
-var _NotFoundPage = __webpack_require__(70);
+var _NotFoundPage = __webpack_require__(72);
 
 var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
 
-var _HomePage = __webpack_require__(71);
+var _HomePage = __webpack_require__(73);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
@@ -10443,59 +10439,23 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _BreadCrumb = __webpack_require__(77);
+var _BreadCrumb = __webpack_require__(70);
 
 var _BreadCrumb2 = _interopRequireDefault(_BreadCrumb);
+
+var _ProductRow = __webpack_require__(71);
+
+var _ProductRow2 = _interopRequireDefault(_ProductRow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProductsListPage = function ProductsListPage(props) {
     var view = null;
 
-    var getProductList = function getProductList() {
-        var items = props.items;
-
-        return items.map(function (item) {
-            return _react2.default.createElement(
-                'li',
-                { className: 'row' },
-                _react2.default.createElement(
-                    'a',
-                    { key: item.id, href: '/items/' + item.id },
-                    _react2.default.createElement('img', { src: item.picture, alt: item.title })
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'item-description' },
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        '$ ',
-                        item.price.amount,
-                        ' ',
-                        item.free_shipping
-                    ),
-                    _react2.default.createElement(
-                        'a',
-                        { key: item.id, href: '/items/' + item.id },
-                        '$ ',
-                        item.title
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'item-state' },
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        item.state
-                    )
-                )
-            );
-        });
-    };
-
     if (props) {
+        var categories = props.categories,
+            items = props.items;
+
         view = _react2.default.createElement(
             'div',
             { className: 'products-list' },
@@ -10505,7 +10465,7 @@ var ProductsListPage = function ProductsListPage(props) {
                 _react2.default.createElement(
                     'div',
                     { className: 'row' },
-                    _react2.default.createElement(_BreadCrumb2.default, { categories: props.categories })
+                    _react2.default.createElement(_BreadCrumb2.default, { categories: categories })
                 ),
                 _react2.default.createElement(
                     'div',
@@ -10513,7 +10473,9 @@ var ProductsListPage = function ProductsListPage(props) {
                     _react2.default.createElement(
                         'ul',
                         { className: 'products-list__items' },
-                        getProductList()
+                        items ? items.map(function (item) {
+                            return _react2.default.createElement(_ProductRow2.default, { key: item.id, item: item });
+                        }) : null
                     )
                 )
             )
@@ -10527,6 +10489,156 @@ exports.default = ProductsListPage;
 
 /***/ }),
 /* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BreadCrumb = function BreadCrumb(props) {
+
+    var getItems = function getItems() {
+        var categories = props.categories;
+
+        return categories.map(function (category, i) {
+            if (i + 1 < categories.length) {
+                return _react2.default.createElement(
+                    "li",
+                    { key: i },
+                    _react2.default.createElement(
+                        "span",
+                        null,
+                        category
+                    ),
+                    _react2.default.createElement(
+                        "svg",
+                        { width: "15", height: "15", viewBox: "0 0 18 18", xmlns: "http://www.w3.org/2000/svg", "class": "ui-icon ui-icon--chevron-right" },
+                        _react2.default.createElement(
+                            "g",
+                            { fill: "#99999", "fill-rule": "evenodd" },
+                            _react2.default.createElement("path", { d: "M6.646 5.354l4 4 .354.353.707-.707-.353-.354-4-4L7 4.293 6.293 5z" }),
+                            _react2.default.createElement("path", { d: "M7.354 13.354l4-4L11.707 9 11 8.293l-.354.353-4 4-.353.354.707.707z" })
+                        )
+                    )
+                );
+            } else {
+                return _react2.default.createElement(
+                    "li",
+                    { key: i },
+                    _react2.default.createElement(
+                        "span",
+                        null,
+                        category
+                    )
+                );
+            }
+        });
+    };
+    return _react2.default.createElement(
+        "div",
+        { className: "breadcrumb" },
+        _react2.default.createElement(
+            "ul",
+            null,
+            getItems()
+        )
+    );
+};
+
+exports.default = BreadCrumb;
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProductRow = function ProductRow(props) {
+    var item = props.item;
+
+    var checkShipping = function checkShipping() {
+
+        if (item.free_shipping) {
+            return _react2.default.createElement(
+                "span",
+                null,
+                _react2.default.createElement("img", { src: "./../../assets/ic_shipping.png",
+                    srcSet: "./../../assets/ic_shipping.png 1x, ./../../assets/ic_shipping@2x.png.png 2x",
+                    alt: "shipping_logo" })
+            );
+        } else {
+            return null;
+        }
+    };
+
+    return _react2.default.createElement(
+        "li",
+        { className: "product-row row" },
+        _react2.default.createElement(
+            "a",
+            { className: "product-thumbnail", href: "/items/" + item.id },
+            _react2.default.createElement("img", { src: item.picture, alt: item.title })
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "product-description" },
+            _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "span",
+                    null,
+                    "$ ",
+                    item.price.amount
+                ),
+                checkShipping()
+            ),
+            _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "a",
+                    { href: "/items/" + item.id },
+                    item.title
+                )
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "product-state" },
+            _react2.default.createElement(
+                "p",
+                null,
+                item.state
+            )
+        )
+    );
+};
+
+exports.default = ProductRow;
+
+/***/ }),
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10562,7 +10674,7 @@ var NotFoundPage = function NotFoundPage() {
 exports.default = NotFoundPage;
 
 /***/ }),
-/* 71 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10585,57 +10697,10 @@ var HomePage = function HomePage(props) {
 exports.default = HomePage;
 
 /***/ }),
-/* 72 */
+/* 74 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BreadCrumb = function BreadCrumb(props) {
-
-    var getItems = function getItems() {
-        var categories = props.categories;
-
-        return categories.map(function (category, i) {
-            return _react2.default.createElement(
-                "li",
-                { key: i },
-                category
-            );
-        });
-    };
-    return _react2.default.createElement(
-        "div",
-        { className: "breadcrumb" },
-        _react2.default.createElement(
-            "ul",
-            null,
-            getItems()
-        )
-    );
-};
-
-exports.default = BreadCrumb;
 
 /***/ })
 /******/ ]);

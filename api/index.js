@@ -72,12 +72,16 @@ function parseSearch (searchData) {
 
 function Item (item, query) {
     this.id = item.id;
-    this.title = item.title,
+    this.title = item.title;
+    const integer_part = Math.floor(Number(item.price));
+    const decimal_part = Number((Number(item.price) - integer_part).toFixed(2)) * 100;
+
     this.price = {
         currency: item.currency_id,
-        amount: Number(item.price),
-        decimals: null
-    },
+        amount: integer_part,
+        decimals: decimal_part
+    };
+    
     this.picture = item.thumbnail;
     this.condition = item.condition;
     this.free_shipping = item.shipping.free_shipping;

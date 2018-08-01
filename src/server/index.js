@@ -20,7 +20,7 @@ router.get('/items', (req, res) => {
     axios.get(`${API_ENDPOINT}/items?q=${query}`)
     .then(response => {
         response.data.searchQuery = query;
-        const category = response.data.categories[0];
+        const category = response.data.categories  ? response.data.categories[0] : '';
         const title = `${query} - ${category} en Mercado Libre Argentina`;
         const html = renderer(req, response.data, title);
         res.send(html);
