@@ -82,20 +82,32 @@ function Item (item, query) {
         decimals: decimal_part
     };
     
-    this.picture = item.thumbnail;
     this.condition = item.condition;
     this.free_shipping = item.shipping.free_shipping;
     if (query === QUERY_SEARCH) {
         this.state = item.address.state_name;  
+        this.picture = item.thumbnail;
     }
     if (query === QUERY_ITEM) {
         this.sold_quantity = Number(item.sold_quantity);
         this.description = item.description;
+        let baseWidth = 0;
+        item.pictures.map(picture => {
+           let pictureWidth = picture.size.split('x')[0];
+           if(pictureWidth > baseWidth) {
+               baseWidth = pictureWidth;
+               this.picture = picture.url;
+           }
+        });
     }
 }
 
 function getCategories (categories) {
     return categories.path_from_root.map(category => category.name);
+}
+
+function getLargePicture (item, dimension) {
+
 }
 
 app.use('/api', router);
