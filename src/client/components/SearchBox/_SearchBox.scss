@@ -1,4 +1,45 @@
 .search-box {
-    width: 100%;
+    height: 54px;
     background-color: $ml-color-yellow;
+    align-self: center;
+    .row {
+        align-items: center;
+        height: 100%;
+    }
+    .ml-logo {
+        grid-column: 2;
+    }
+    form {
+        margin: 0;
+        grid-column: 3/12;
+        align-self: center;
+        input[type="text"] {
+            grid-column: 1/12;
+            height: 40px;
+            padding: 10px;
+            border-radius: 4px 0 0 4px;
+            border: none;
+            &:focus, &:active, &:active:focus {
+                border: none;
+                outline: none;
+            }
+            ::placeholder {
+                color: $ml-color-grey;
+                font-size: 18px;
+            }
+        }
+
+        button {
+            grid-column: 12;
+            height: 40px;
+            width: 40px;
+            border-radius: 0 4px 4px 0;
+            border: none;
+            background: $ml-color-grey;
+            &:focus, &:active, &:active:focus {
+                border: none;
+                outline: none;
+            }
+        }
+    }
 }

@@ -1,10 +1,35 @@
 .products {
     &-list {
-        display: flex;
-        flex-direction: column;
-        &__row {
-            display: flex;
-            flex-direction: row;
+        .breadcrumb {
+            grid-column: 2 / 12;
+        }
+        &__items {
+            padding:0;
+            border-radius: 4px;
+            background: white;
+            grid-column: 2 / 12;
+            margin: 0;
+            list-style: none;
+            li {
+                a{
+                    text-decoration: none;
+                    color: black;
+                    grid-column: 1 / span 2;
+                    padding: 16px;
+                    img {
+                        width: 180px;
+                        height: 180px;
+                        border-radius: 4px;
+                    }
+                }
+
+                .item-description {
+                    grid-column: 3 / span 8;
+                }
+                .item-state {
+                    grid-column: 11 / span 2;
+                }
+            }
         }
     }
 }

@@ -10300,13 +10300,42 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var SearchBox = function SearchBox(props) {
     return _react2.default.createElement(
-        'div',
-        { className: 'search-box' },
+        "div",
+        { className: "search-box" },
         _react2.default.createElement(
-            'form',
-            { method: 'GET', action: '/items', id: 'searchBox', autoComplete: 'off' },
-            _react2.default.createElement('input', { type: 'text', name: 'q', id: 'q', defaultValue: props.searchQuery || '' }),
-            _react2.default.createElement('input', { type: 'submit', value: 'Search' })
+            "div",
+            { className: "container" },
+            _react2.default.createElement(
+                "div",
+                { className: "row" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "ml-logo" },
+                    _react2.default.createElement(
+                        "a",
+                        { href: "/" },
+                        _react2.default.createElement("img", { src: "./../../assets/Logo_ML.png",
+                            srcSet: "./../../assets/Logo_ML.png 1x, ./../../assets/Logo_ML@2x.png.png 2x",
+                            alt: "mercado libre logo" })
+                    )
+                ),
+                _react2.default.createElement(
+                    "form",
+                    { method: "GET", action: "/items", id: "searchBox", autoComplete: "off" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "row no-gutter" },
+                        _react2.default.createElement("input", { type: "text", placeholder: "Nunca dejes de buscar", name: "q", id: "q", defaultValue: props.searchQuery || '' }),
+                        _react2.default.createElement(
+                            "button",
+                            { type: "submit" },
+                            _react2.default.createElement("img", { src: "./../../assets/ic_Search.png",
+                                srcSet: "./../../assets/ic_Search.png 1x, ./../../assets/ic_Search@2x.png.png 2x",
+                                alt: "mercado libre logo" })
+                        )
+                    )
+                )
+            )
         )
     );
 };
@@ -10414,6 +10443,10 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _BreadCrumb = __webpack_require__(77);
+
+var _BreadCrumb2 = _interopRequireDefault(_BreadCrumb);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProductsListPage = function ProductsListPage(props) {
@@ -10424,16 +10457,38 @@ var ProductsListPage = function ProductsListPage(props) {
 
         return items.map(function (item) {
             return _react2.default.createElement(
-                "a",
-                { key: item.id, href: "/items/" + item.id },
+                'li',
+                { className: 'row' },
                 _react2.default.createElement(
-                    "li",
-                    { className: "products-list__row" },
-                    _react2.default.createElement("img", { src: item.picture, alt: item.title }),
+                    'a',
+                    { key: item.id, href: '/items/' + item.id },
+                    _react2.default.createElement('img', { src: item.picture, alt: item.title })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'item-description' },
                     _react2.default.createElement(
-                        "p",
+                        'p',
                         null,
+                        '$ ',
+                        item.price.amount,
+                        ' ',
+                        item.free_shipping
+                    ),
+                    _react2.default.createElement(
+                        'a',
+                        { key: item.id, href: '/items/' + item.id },
+                        '$ ',
                         item.title
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'item-state' },
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        item.state
                     )
                 )
             );
@@ -10442,12 +10497,25 @@ var ProductsListPage = function ProductsListPage(props) {
 
     if (props) {
         view = _react2.default.createElement(
-            "div",
-            null,
+            'div',
+            { className: 'products-list' },
             _react2.default.createElement(
-                "ul",
-                { className: "products-list" },
-                getProductList()
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(_BreadCrumb2.default, { categories: props.categories })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(
+                        'ul',
+                        { className: 'products-list__items' },
+                        getProductList()
+                    )
+                )
             )
         );
     }
@@ -10521,6 +10589,53 @@ exports.default = HomePage;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BreadCrumb = function BreadCrumb(props) {
+
+    var getItems = function getItems() {
+        var categories = props.categories;
+
+        return categories.map(function (category, i) {
+            return _react2.default.createElement(
+                "li",
+                { key: i },
+                category
+            );
+        });
+    };
+    return _react2.default.createElement(
+        "div",
+        { className: "breadcrumb" },
+        _react2.default.createElement(
+            "ul",
+            null,
+            getItems()
+        )
+    );
+};
+
+exports.default = BreadCrumb;
 
 /***/ })
 /******/ ]);

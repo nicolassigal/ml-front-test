@@ -1,9 +1,16 @@
 import React from 'react';
 
 const BreadCrumb = (props) => {
+
+    const getItems = () => {
+        const { categories } = props;
+        return (categories.map((category, i) => <li key={i}>{category}</li>));
+    }
     return (
         <div className="breadcrumb">
-            <h3>Bread > Crumb </h3>
+            <ul>
+                { getItems() }
+            </ul>
         </div>
     );
 }

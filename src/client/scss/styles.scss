@@ -1,9 +1,12 @@
 @import 'helpers/variables';
 @import 'helpers/mixins';
+@import 'helpers/grid';
 @import '../components/components';
 @import '../pages/pages';
 
 html, body {
     padding: 0;
     margin: 0;
+    height: 100vh;
+    background-color: $ml-color-grey;
 }

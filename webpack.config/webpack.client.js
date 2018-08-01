@@ -2,6 +2,8 @@ const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('../webpack.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const config = {
     entry: './src/client/index.js',
     output: {
@@ -21,7 +23,10 @@ const config = {
         ]
       },
       plugins: [
-        new ExtractTextPlugin('styles.css')
+        new ExtractTextPlugin('styles.css'),
+        new CopyWebpackPlugin([
+          { from: path.resolve(__dirname, '../src/client/assets'), to: path.resolve(__dirname, '../public/assets') }
+        ])
       ]
 }
 

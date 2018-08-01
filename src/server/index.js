@@ -44,7 +44,7 @@ router.get('/items/:id', (req, res) => {
 });
 
 router.get('*', (req, res) => {
-    data = { searchQuery: '' };
+    const data = { searchQuery: '' };
     const html = renderer(req, data, 'Mercado Libre Argentina - Dónde comprar y vender de todo');
     res.send(html);
 });
