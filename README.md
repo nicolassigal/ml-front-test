@@ -1,10 +1,10 @@
 # ml-front-test
 
 ## Stack Tecnológico: 
-⋅⋅* React Server Side Rendering (SSR)
-⋅⋅* SASS
-⋅⋅* Css Grid - Flexbox
-⋅⋅* NodeJS - Express
+* React Server Side Rendering (SSR)
+* SASS
+* Css Grid - Flexbox
+* NodeJS - Express
 
 ## Build
 
