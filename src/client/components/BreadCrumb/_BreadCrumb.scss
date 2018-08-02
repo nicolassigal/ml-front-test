@@ -1,4 +1,8 @@
 .breadcrumb {
+    grid-column: 2 / 12;
+    @media only screen and (max-width: 800px) {
+        display: none;
+    }
     ul {
         padding: 0;
         margin: 16px 0px;
@@ -9,15 +13,23 @@
         justify-content: flex-start;
         align-items: center;
         li {
-            color: $ml-color-dark-grey;
+            color: $ml-color-grey;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
-
+            &:last-child {
+                font-weight: 700;
+            }
+            span {
+                font-size: 14px;
+            }
             .ui-icon {
                 width: 15px;
                 height: 15px;
+                margin-left: 2px;
+                margin-right: 2px;
+                fill: $ml-color-grey;
             }
         }
     }

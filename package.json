@@ -5,11 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm-run-all --parallel serve:* build:*",
-    "serve:api": "nodemon start.js",
-    "serve:render-server": "nodemon build/bundle.js",
-    "build:server": "webpack --config webpack.config/webpack.server.js --watch",
-    "build:client": "webpack --config webpack.config/webpack.client.js --watch"
+    "start": "npm run prod",
+    "watch:build-server": "webpack --config webpack.config/webpack.server.js --watch",
+    "watch:build-client": "webpack --config webpack.config/webpack.client.js --watch",
+    "watch-server:render-server": "nodemon build/bundle.js",
+    "watch-server:api-server": "nodemon start.js",
+    "dev": "npm-run-all --parallel watch:* watch-server:*",
+    "build:client": "webpack --config webpack.config/webpack.client.js",
+    "build:server": "webpack --config webpack.config/webpack.server.js",
+    "build-server:render-server": "node build/bundle.js",
+    "build-server:api-server": "node start.js",
+    "prod": "npm-run-all --parallel build:* && npm-run-all --parallel build-server:*"
   },
   "repository": {
     "type": "git",

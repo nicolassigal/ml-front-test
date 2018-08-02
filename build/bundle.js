@@ -103,13 +103,15 @@ var _renderer = __webpack_require__(3);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _cors = __webpack_require__(16);
+var _cors = __webpack_require__(17);
 
 var _cors2 = _interopRequireDefault(_cors);
 
-var _axios = __webpack_require__(17);
+var _axios = __webpack_require__(18);
 
 var _axios2 = _interopRequireDefault(_axios);
+
+var _utils = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -129,7 +131,8 @@ router.get('/items', function (req, res) {
     _axios2.default.get(API_ENDPOINT + '/items?q=' + query).then(function (response) {
         response.data.searchQuery = query;
         var category = response.data.categories ? response.data.categories[0] : '';
-        var title = query + ' - ' + category + ' en Mercado Libre Argentina';
+        var categoryTitle = category ? '- ' + category + ' ' : '';
+        var title = query + ' ' + categoryTitle + 'en Mercado Libre Argentina';
         var html = (0, _renderer2.default)(req, response.data, title);
         res.send(html);
     }).catch(function (err) {
@@ -143,7 +146,7 @@ router.get('/items/:id', function (req, res) {
         response.data.searchQuery = '';
         var productTitle = response.data.item.title;
         var productPrice = response.data.item.price.amount;
-        var currency = getCurrency(response.data.item.price.currency);
+        var currency = (0, _utils.getCurrencySymbol)(response.data.item.price.currency);
         var title = productTitle + ' - ' + currency + ' ' + productPrice + ' en Mercado Libre Argentina';
         var html = (0, _renderer2.default)(req, response.data, title);
         res.send(html);
@@ -157,15 +160,6 @@ router.get('*', function (req, res) {
     var html = (0, _renderer2.default)(req, data, 'Mercado Libre Argentina - Dónde comprar y vender de todo');
     res.send(html);
 });
-
-function getCurrency(currency) {
-    switch (currency) {
-        case 'ARS':
-            return '$';
-        default:
-            return '$';
-    }
-}
 
 app.use((0, _cors2.default)());
 app.use('/', router);
@@ -221,7 +215,7 @@ exports.default = function (req, data, title) {
         { location: req.url, context: {} },
         _react2.default.createElement(_App2.default, data)
     ));
-    return '\n    <html>\n        <head>\n            <title>' + title + '</title>\n            <link rel="stylesheet" type="text/css" href="/styles.css" />\n        </head>\n        <body>\n            <div id="root">' + content + '</div>\n            <script>window.__INITIAL_DATA__ = ' + (0, _serializeJavascript2.default)(data) + '</script>\n            <script src="/bundle.js"></script>\n        </body>\n    </html>\n    ';
+    return '\n    <html lang="es">\n        <head>\n            <title>' + title + '</title>\n            <link rel="stylesheet" type="text/css" href="/styles.css" />\n            <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />\n            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">\n        </head>\n        <body>\n            <div id="root">' + content + '</div>\n            <script>window.__INITIAL_DATA__ = ' + (0, _serializeJavascript2.default)(data) + '</script>\n            <script src="/bundle.js"></script>\n        </body>\n    </html>\n    ';
 };
 
 /***/ }),
@@ -366,15 +360,15 @@ var _ProductDetailPage = __webpack_require__(10);
 
 var _ProductDetailPage2 = _interopRequireDefault(_ProductDetailPage);
 
-var _ProductsListPage = __webpack_require__(11);
+var _ProductsListPage = __webpack_require__(13);
 
 var _ProductsListPage2 = _interopRequireDefault(_ProductsListPage);
 
-var _NotFoundPage = __webpack_require__(14);
+var _NotFoundPage = __webpack_require__(15);
 
 var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
 
-var _HomePage = __webpack_require__(15);
+var _HomePage = __webpack_require__(16);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
@@ -414,64 +408,85 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ProductsListPage = function ProductsListPage(props) {
-    var view = null;
-    if (props) {
-        var item = props.item;
-
-        view = _react2.default.createElement(
-            "div",
-            { className: "product-detail" },
-            _react2.default.createElement(
-                "p",
-                null,
-                item.description
-            )
-        );
-    }
-
-    return view;
-};
-
-exports.default = ProductsListPage;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(2);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _BreadCrumb = __webpack_require__(12);
+var _BreadCrumb = __webpack_require__(11);
 
 var _BreadCrumb2 = _interopRequireDefault(_BreadCrumb);
 
-var _ProductRow = __webpack_require__(13);
-
-var _ProductRow2 = _interopRequireDefault(_ProductRow);
+var _utils = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProductsListPage = function ProductsListPage(props) {
     var view = null;
 
+    var getSoldItems = function getSoldItems(sold_quantity, condition) {
+        var condition_es = (0, _utils.getCondition)(condition);
+        var sold_label = null;
+        var condition_label = null;
+
+        if (condition_es) {
+            condition_label = _react2.default.createElement(
+                'span',
+                null,
+                condition_es
+            );
+        }
+
+        if (sold_quantity) {
+            if (sold_quantity > 1) {
+                sold_label = _react2.default.createElement(
+                    'span',
+                    null,
+                    sold_quantity,
+                    ' vendidos'
+                );
+            } else {
+                sold_label = _react2.default.createElement(
+                    'span',
+                    null,
+                    sold_quantity,
+                    ' vendido'
+                );
+            }
+        }
+        return _react2.default.createElement(
+            'div',
+            { className: 'caption-info' },
+            condition_label,
+            sold_label
+        );
+    };
+    var getAmount = function getAmount(price) {
+        var currency = price.currency,
+            amount = price.amount,
+            decimals = price.decimals;
+
+        var currency_symbol = (0, _utils.getCurrencySymbol)(currency);
+        return _react2.default.createElement(
+            'div',
+            { className: 'caption-amount' },
+            _react2.default.createElement(
+                'span',
+                null,
+                currency_symbol,
+                ' ',
+                amount
+            ),
+            decimals ? _react2.default.createElement(
+                'sup',
+                null,
+                decimals
+            ) : null
+        );
+    };
+
     if (props) {
-        var categories = props.categories,
-            items = props.items;
+        var item = props.item,
+            categories = props.categories;
 
         view = _react2.default.createElement(
             'div',
-            { className: 'products-list' },
+            { className: 'product-detail' },
             _react2.default.createElement(
                 'div',
                 { className: 'container' },
@@ -484,11 +499,70 @@ var ProductsListPage = function ProductsListPage(props) {
                     'div',
                     { className: 'row' },
                     _react2.default.createElement(
-                        'ul',
-                        { className: 'products-list__items' },
-                        items ? items.map(function (item) {
-                            return _react2.default.createElement(_ProductRow2.default, { key: item.id, item: item });
-                        }) : null
+                        'div',
+                        { className: 'product-workspace product-detail__workspace' },
+                        _react2.default.createElement(
+                            'section',
+                            { className: 'row' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'product-detail__image' },
+                                _react2.default.createElement('img', { src: item.picture, alt: 'item picture' })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'product-detail__caption' },
+                                getSoldItems(item.sold_quantity, item.condition),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'caption-title' },
+                                    item.title
+                                ),
+                                getAmount(item.price),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'caption-purchase' },
+                                    _react2.default.createElement(
+                                        'button',
+                                        null,
+                                        'Comprar'
+                                    )
+                                )
+                            )
+                        ),
+                        item.description ? _react2.default.createElement(
+                            'section',
+                            { className: 'row' },
+                            _react2.default.createElement(
+                                'article',
+                                { className: 'product-detail__description' },
+                                _react2.default.createElement(
+                                    'header',
+                                    { className: 'description-title' },
+                                    _react2.default.createElement(
+                                        'h2',
+                                        null,
+                                        'Descripci\xF3n del producto'
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'description-body' },
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        item.description.split('\n').map(function (line, key) {
+                                            return _react2.default.createElement(
+                                                'span',
+                                                { key: key },
+                                                line,
+                                                _react2.default.createElement('br', null)
+                                            );
+                                        })
+                                    )
+                                )
+                            )
+                        ) : null
                     )
                 )
             )
@@ -501,7 +575,7 @@ var ProductsListPage = function ProductsListPage(props) {
 exports.default = ProductsListPage;
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -534,10 +608,10 @@ var BreadCrumb = function BreadCrumb(props) {
                     ),
                     _react2.default.createElement(
                         "svg",
-                        { width: "15", height: "15", viewBox: "0 0 18 18", xmlns: "http://www.w3.org/2000/svg", "class": "ui-icon ui-icon--chevron-right" },
+                        { width: "15", height: "15", viewBox: "0 0 18 18", xmlns: "http://www.w3.org/2000/svg", className: "ui-icon ui-icon--chevron-right" },
                         _react2.default.createElement(
                             "g",
-                            { fill: "#99999", "fill-rule": "evenodd" },
+                            { fill: "#99999", fillRule: "evenodd" },
                             _react2.default.createElement("path", { d: "M6.646 5.354l4 4 .354.353.707-.707-.353-.354-4-4L7 4.293 6.293 5z" }),
                             _react2.default.createElement("path", { d: "M7.354 13.354l4-4L11.707 9 11 8.293l-.354.353-4 4-.353.354.707.707z" })
                         )
@@ -570,6 +644,38 @@ var BreadCrumb = function BreadCrumb(props) {
 exports.default = BreadCrumb;
 
 /***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.getCurrencySymbol = getCurrencySymbol;
+exports.getCondition = getCondition;
+function getCurrencySymbol(currency) {
+    switch (currency) {
+        case 'ARS':
+            return '$';
+        default:
+            return '$';
+    }
+}
+
+function getCondition(condition) {
+    switch (condition) {
+        case 'new':
+            return 'Nuevo';
+        case 'used':
+            return 'Usado';
+        default:
+            return '';
+    }
+}
+
+/***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -584,65 +690,151 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _BreadCrumb = __webpack_require__(11);
+
+var _BreadCrumb2 = _interopRequireDefault(_BreadCrumb);
+
+var _ProductRow = __webpack_require__(14);
+
+var _ProductRow2 = _interopRequireDefault(_ProductRow);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProductsListPage = function ProductsListPage(props) {
+    var view = null;
+
+    if (props) {
+        var categories = props.categories,
+            items = props.items;
+
+        view = _react2.default.createElement(
+            'div',
+            { className: 'products-list' },
+            _react2.default.createElement(
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(_BreadCrumb2.default, { categories: categories })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'product-workspace' },
+                        _react2.default.createElement(
+                            'ul',
+                            { className: 'products-list__items' },
+                            items ? items.map(function (item) {
+                                return _react2.default.createElement(_ProductRow2.default, { key: item.id, item: item });
+                            }) : null
+                        )
+                    )
+                )
+            )
+        );
+    }
+
+    return view;
+};
+
+exports.default = ProductsListPage;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _utils = __webpack_require__(12);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProductRow = function ProductRow(props) {
     var item = props.item;
 
-    var checkShipping = function checkShipping() {
 
+    var checkShipping = function checkShipping() {
         if (item.free_shipping) {
-            return _react2.default.createElement(
-                "span",
-                null,
-                _react2.default.createElement("img", { src: "./../../assets/ic_shipping.png",
-                    srcSet: "./../../assets/ic_shipping.png 1x, ./../../assets/ic_shipping@2x.png.png 2x",
-                    alt: "shipping_logo" })
-            );
+            return _react2.default.createElement('img', { src: './../../assets/ic_shipping.png',
+                srcSet: './../../assets/ic_shipping.png 1x, ./../../assets/ic_shipping@2x.png.png 2x',
+                alt: 'shipping_logo' });
         } else {
             return null;
         }
     };
 
+    var getDecimals = function getDecimals(price) {
+        if (price.decimals) {
+            return _react2.default.createElement(
+                'sup',
+                { className: 'price-decimal' },
+                price.decimals
+            );
+        }
+    };
+
     return _react2.default.createElement(
-        "li",
-        { className: "product-row row" },
+        'li',
+        { className: 'product-row row' },
         _react2.default.createElement(
-            "a",
-            { className: "product-thumbnail", href: "/items/" + item.id },
-            _react2.default.createElement("img", { src: item.picture, alt: item.title })
+            'a',
+            { className: 'product-thumbnail', href: '/items/' + item.id },
+            _react2.default.createElement('img', { src: item.picture, alt: item.title })
         ),
         _react2.default.createElement(
-            "div",
-            { className: "product-description" },
+            'div',
+            { className: 'product-info' },
             _react2.default.createElement(
-                "div",
-                null,
+                'div',
+                { className: 'row' },
                 _react2.default.createElement(
-                    "span",
-                    null,
-                    "$ ",
-                    item.price.amount
+                    'div',
+                    { className: 'product-info__title' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        ' ',
+                        (0, _utils.getCurrencySymbol)(item.price.currency),
+                        ' ',
+                        item.price.amount
+                    ),
+                    getDecimals(item.price),
+                    checkShipping()
                 ),
-                checkShipping()
+                _react2.default.createElement(
+                    'div',
+                    { className: 'product-info__state' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        item.state
+                    )
+                )
             ),
             _react2.default.createElement(
-                "div",
-                null,
+                'div',
+                { className: 'row' },
                 _react2.default.createElement(
-                    "a",
-                    { href: "/items/" + item.id },
-                    item.title
+                    'div',
+                    { className: 'product-info__description' },
+                    _react2.default.createElement(
+                        'a',
+                        { href: '/items/' + item.id },
+                        item.title
+                    )
                 )
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "product-state" },
-            _react2.default.createElement(
-                "p",
-                null,
-                item.state
             )
         )
     );
@@ -651,7 +843,7 @@ var ProductRow = function ProductRow(props) {
 exports.default = ProductRow;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -687,7 +879,7 @@ var NotFoundPage = function NotFoundPage() {
 exports.default = NotFoundPage;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -710,13 +902,13 @@ var HomePage = function HomePage(props) {
 exports.default = HomePage;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("cors");
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("axios");

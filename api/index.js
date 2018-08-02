@@ -8,6 +8,7 @@ import {
     QUERY_SEARCH,
     FILTER_CATEGORY
  } from './constants';
+import { runInNewContext } from 'vm';
 
 const app = express(),
     port = process.env.port || 3200,
@@ -28,36 +29,37 @@ router.get('/items', (req, res) => {
 });
 
 router.get('/items/:id', (req, res) => {
-        Promise.all([
-        axios.get(`${api_config.ML_ITEMS_API}/${req.params.id}`),
-        axios.get(`${api_config.ML_ITEMS_API}/${req.params.id}/description`)
-        ])
-        .then(([itemResponse , descriptionResponse]) => {
-                itemResponse.data.description = descriptionResponse.data.plain_text;
-                axios.get(`${api_config.ML_CATEGORY_API}/${itemResponse.data.category_id}`)
-                .then(categoryResponse => {
-                    if (itemResponse.status === 200 &&
-                        descriptionResponse.status === 200 &&
-                        categoryResponse.status === 200) {
-                        const response = {
-                            author: packageJSON.author,
-                            item: new Item(itemResponse.data, QUERY_ITEM),
-                            categories: getCategories(categoryResponse.data)
-                        }
-                        res.json(response);
-                     } else {
-                        res.error({});
-                     }
-                }).catch(error => res.json(error));
-        })
-        .catch(error => res.json(error));
+    let requests = [
+        axios.get(`${api_config.ML_ITEMS_API}/${req.params.id}`).catch(e => e),
+        axios.get(`${api_config.ML_ITEMS_API}/${req.params.id}/description`).catch(e => e)
+    ];
+    
+    Promise.all(requests).then(([itemResponse, descriptionResponse]) => {
+        if(itemResponse.data.category_id) {
+            axios.get(`${api_config.ML_CATEGORY_API}/${itemResponse.data.category_id}`)
+            .then(categoryResponse => {
+                res.json(getItemResponse(itemResponse, descriptionResponse, categoryResponse));
+            })
+            .catch(error =>  res.json(getItemResponse(itemResponse, descriptionResponse, {})));
+        } else {
+            res.json(getItemResponse(itemResponse, descriptionResponse, {}));
+        }
+    });
 });
+
+function getItemResponse (itemResponse, descriptionResponse, categoryResponse) {
+    return {
+        author: packageJSON.author,
+        item: itemResponse && itemResponse.status === 200 ? new Item(itemResponse.data, descriptionResponse, QUERY_ITEM) : {},
+        categories: categoryResponse && categoryResponse.status === 200 ? getCategories(categoryResponse.data) : []
+    }
+}
 
 function parseSearch (searchData) {
     const categoryFilter = searchData.filters.find(filter => filter.id === FILTER_CATEGORY);
     let categories = [],
         author = packageJSON.author,
-        items = searchData.results.map(item => new Item(item, QUERY_SEARCH));
+        items = searchData.results.map(item => new Item(item, {}, QUERY_SEARCH));
 
     if(categoryFilter && categoryFilter.values.length) {
         categories = getCategories(categoryFilter.values[0]);
@@ -70,7 +72,9 @@ function parseSearch (searchData) {
     };
 };
 
-function Item (item, query) {
+
+
+function Item (item, descriptionResponse = {}, query) {
     this.id = item.id;
     this.title = item.title;
     const integer_part = Math.floor(Number(item.price));
@@ -78,7 +82,7 @@ function Item (item, query) {
 
     this.price = {
         currency: item.currency_id,
-        amount: integer_part,
+        amount: pointThousandsSeparator(integer_part),
         decimals: decimal_part
     };
     
@@ -90,7 +94,11 @@ function Item (item, query) {
     }
     if (query === QUERY_ITEM) {
         this.sold_quantity = Number(item.sold_quantity);
-        this.description = item.description;
+        if(descriptionResponse && descriptionResponse.status === 200) {
+            this.description = descriptionResponse.data.plain_text;
+        } else {
+            this.description = '';
+        }
         let baseWidth = 0;
         item.pictures.map(picture => {
            let pictureWidth = picture.size.split('x')[0];
@@ -106,8 +114,8 @@ function getCategories (categories) {
     return categories.path_from_root.map(category => category.name);
 }
 
-function getLargePicture (item, dimension) {
-
+function pointThousandsSeparator(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
 app.use('/api', router);

@@ -14,9 +14,11 @@ const ProductsListPage = props => {
                         <BreadCrumb categories={ categories } />
                     </div>
                     <div className="row">
-                        <ul className="products-list__items">
-                            { items ? items.map(item => <ProductRow key={item.id} item={item} />) : null }
-                        </ul>
+                        <div className="product-workspace">
+                            <ul className="products-list__items">
+                                { items ? items.map(item => <ProductRow key={item.id} item={item} />) : null }
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

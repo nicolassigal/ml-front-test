@@ -8,6 +8,16 @@ html, body {
     padding: 0;
     margin: 0;
     height: 100vh;
-    background-color: $ml-color-grey;
+    background-color: $ml-color-light-grey;
     font-family: $font;
+    .product-workspace {
+        border-radius: 4px;
+        background: white;
+        grid-column: 2 / 12;
+        margin: 0 0 54px 0;
+        @media only screen and (max-width: 800px) {
+            grid-column: 1 / span 12;
+            border-radius: 0;
+        }
+    }
 }

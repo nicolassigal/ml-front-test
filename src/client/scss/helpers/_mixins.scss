@@ -1,0 +1,21 @@
+@mixin ml-btn-blue ($width, $height) {
+    width: $width;
+    height: $height;
+    background: $ml-color-blue;
+    color: $ml-color-white;
+    border: none;
+    border-radius: 4px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+    }
+    &:active, &:focus, &:active:focus {
+        outline: none;
+        border: none;
+        box-shadow: none;
+    }
+}

@@ -12,10 +12,12 @@ export default (req, data, title) => {
         </StaticRouter>
         );
     return `
-    <html>
+    <html lang="es">
         <head>
             <title>${title}</title>
             <link rel="stylesheet" type="text/css" href="/styles.css" />
+            <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         </head>
         <body>
             <div id="root">${content}</div>

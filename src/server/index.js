@@ -3,7 +3,8 @@ import React from 'react';
 import renderer from './helpers/renderer';
 import cors from 'cors';
 import axios from 'axios';
-
+import { getCurrencySymbol } from '../shared/utils';
+        
 const API_ENDPOINT = 'http://localhost:3200/api';
 const port = process.env.port || 5000;
 const app = express();
@@ -21,7 +22,8 @@ router.get('/items', (req, res) => {
     .then(response => {
         response.data.searchQuery = query;
         const category = response.data.categories  ? response.data.categories[0] : '';
-        const title = `${query} - ${category} en Mercado Libre Argentina`;
+        const categoryTitle = category ? `- ${ category } `: '';
+        const title = `${query} ${categoryTitle}en Mercado Libre Argentina`;
         const html = renderer(req, response.data, title);
         res.send(html);
     })
@@ -35,7 +37,7 @@ router.get('/items/:id', (req, res) => {
         response.data.searchQuery = '';
         const productTitle = response.data.item.title;
         const productPrice = response.data.item.price.amount;
-        const currency = getCurrency(response.data.item.price.currency);
+        const currency = getCurrencySymbol(response.data.item.price.currency);
         const title = `${productTitle} - ${currency} ${productPrice} en Mercado Libre Argentina`;
         const html = renderer(req, response.data, title);
         res.send(html);
@@ -48,15 +50,6 @@ router.get('*', (req, res) => {
     const html = renderer(req, data, 'Mercado Libre Argentina - Dónde comprar y vender de todo');
     res.send(html);
 });
-
-function getCurrency (currency) {
-    switch(currency) {
-        case 'ARS':
-            return '$';
-        default:
-            return '$';
-    }
-}
 
 app.use(cors());
 app.use('/', router);

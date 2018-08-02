@@ -1,6 +1,6 @@
 .search-box {
     height: 54px;
-    background-color: black;
+    background-color: $ml-color-yellow;
     align-self: center;
     .row {
         align-items: center;
@@ -8,7 +8,6 @@
     }
     .ml-logo {
         grid-column: 2;
-        visibility: hidden;
     }
     form {
         margin: 0;
@@ -28,7 +27,7 @@
                 outline: none;
             }
             ::placeholder {
-                color: $ml-color-grey;
+                color: $ml-color-light-grey;
                 font-size: 18px;
             }
         }
@@ -38,10 +37,25 @@
             width: 40px;
             border-radius: 0 4px 4px 0;
             border: none;
-            background: $ml-color-grey;
+            background: $ml-color-light-grey;
             &:focus, &:active, &:active:focus {
                 border: none;
                 outline: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .search-box {
+        .ml-logo {
+            grid-column: 1;
+            padding: 0 15px;        
+        }
+        form {
+            grid-column: 2/12;
+            input[type="text"] {
+                width: 100%;
             }
         }
     }
