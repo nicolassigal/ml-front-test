@@ -6,6 +6,11 @@
 * Css Grid - Flexbox
 * NodeJS - Express
 
+## prerequisitos
+Instalar NodeJS y todas las dependencias
+```
+npm install
+```
 ## Build
 
 ### para correr en modo producción
