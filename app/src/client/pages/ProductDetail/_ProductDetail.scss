@@ -41,12 +41,15 @@
                 font-weight: 700;
             }
             &-amount {
-                font-size: 46px;
-                padding: 32px 0px;
-                sup {
-                    font-size: 20px;
-                    margin-left: 5px;
-                    font-weight: 400;
+                h2 {
+                    padding: 32px 0px;
+                    margin: 0;
+                    font-size: 46px;
+                    sup {
+                        font-size: 20px;
+                        margin-left: 5px;
+                        font-weight: 400;
+                    }
                 }
             }
             &-purchase {
