@@ -3,7 +3,7 @@ para este ejercicio se solicito armar el buscador de productos, listar el result
 
 el Stack tecnológico elegido fue separado en dos proyectos:
 
-## /api:
+## /api
 NodeJS (v8.9.3)
 ExpressJS
 
@@ -39,6 +39,6 @@ Para correr los test con coverage:
 npm run coverage
 ```
 
-### Autor
+## Autor
 Nicolás Emiliano Sigal - 2018
 
