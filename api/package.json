@@ -5,8 +5,9 @@
   "main": "start.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node start.js",
-    "watch": "nodemon start.js"
+    "prebuild": "npm install",
+    "start": "npm run prebuild && node start.js",
+    "watch": "npm run prebuild && nodemon start.js"
   },
   "author": "Nicolas Sigal",
   "license": "ISC",

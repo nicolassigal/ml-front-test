@@ -22,7 +22,7 @@ export default (req, data, title) => {
         <body>
             <div id="root">${content}</div>
             <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
-            <script src="/bundle.js"></script>
+            <script src="/main.bundle.js"></script>
         </body>
     </html>
     `;
