@@ -2,7 +2,7 @@ import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import serialize from 'serialize-javascript';
-import App from '../../shared/App';
+import App from 'Shared/App';
 
 export default (req, data, title) => {
     const context = { data }

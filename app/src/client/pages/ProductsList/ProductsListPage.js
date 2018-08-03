@@ -1,6 +1,6 @@
 import React from 'react';
-import BreadCrumb from '../../components/BreadCrumb/BreadCrumb';
-import ProductRow from '../../components/ProductRow/ProductRow';
+import BreadCrumb from 'Shared/components/BreadCrumb/BreadCrumb';
+import ProductRow from 'Shared/components/ProductRow/ProductRow';
 
 const ProductsListPage = props => {
     let view = null;

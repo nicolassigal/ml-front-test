@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import App from '../shared/App';
+import App from 'Shared/App';
 import './scss/styles.scss';
 
 ReactDOM.hydrate(

@@ -1,24 +1,13 @@
-# ml-front-test
+# ml-front-test 
 
-## Stack Tecnológico: 
-⋅⋅* React Server Side Rendering (SSR)
-⋅⋅* SASS
-⋅⋅* Css Grid - Flexbox
-⋅⋅* NodeJS - Express
+Se separó el proyecto en 2 partes: 
+* API REST
+* App 
 
-## Build
+Tomando en consideración que la api y el cliente son dos partes separadas, pero para propositos de la evaluación
+se subieron en un solo respositorio.
 
-### para correr en modo producción
+## Correr el proyecto
 
-```
-npm run prod
-```
+Para correr el proyecto completo se deben seguir los pasos indicados en cada carpeta.
 
-### para correr en modo development
-```
-npm run dev
-```
-
-## Autor
-
-Nicolás Emiliano Sigal - 2018

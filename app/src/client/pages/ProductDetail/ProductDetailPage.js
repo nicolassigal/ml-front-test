@@ -1,6 +1,6 @@
 import React from 'react';
-import BreadCrumb from '../../components/BreadCrumb/BreadCrumb';
-import { getCurrencySymbol, getCondition } from '../../../shared/utils';
+import BreadCrumb from 'Shared/components/BreadCrumb/BreadCrumb';
+import { getCurrencySymbol, getCondition } from 'Shared/utils';
 
 const ProductsListPage = props => {
     let view = null;
