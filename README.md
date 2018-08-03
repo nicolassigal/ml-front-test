@@ -15,7 +15,11 @@ de esta manera al usuario se le presenta toda la información de una sola vez.
 en la carpeta **/src/client** se encuentra todo el código relativo a cada página, mientras que en la carpeta **/server**, se encuentra la lógica que va a tomar la ruta visitada y renderizar todo a un archivo de html estático que volverá como respuesta.
 en la carpeta **/src/shared** se encuentra todo el código compartido (app universal) como los componentes, el archivo que contiene la información de donde se debe renderizar (hidratar) la app < App />, y archivo utils con funciones que pueden ser solicitadas tanto como desde el render-server como desde las páginas.
 
-Aunque cada proyecto es generado de manera independiente para no ser dependientes, los comandos para correr cada proyectos son iguales.
+Para estilos se utilizo sass, y para un grid system no es necesario hoy en día incluir toda una librería, asi que se uso css grid para 2 dimensiones y flexbox para unidireccionales.
+
+Todo el proyecto cliente es transpilado y optimizado por medio de webpack y babel con loaders.
+
+Aunque cada proyecto es generado de manera independiente para no ser dependientes, los comandos para correr cada proyectos son iguales:
 
 Para correr el proyecto en modo Prod:
 ```
