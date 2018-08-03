@@ -1,0 +1,193 @@
+{
+  "status": 200,
+  "data": {
+    "id": "MLA668027142",
+    "site_id": "MLA",
+    "title": "Ipod Touch 5ta Generación 32 Gb, Nuevo !!!",
+    "subtitle": null,
+    "seller_id": 93965185,
+    "category_id": "MLA43718",
+    "official_store_id": null,
+    "price": 5400,
+    "base_price": 5400,
+    "original_price": null,
+    "currency_id": "ARS",
+    "initial_quantity": 1,
+    "available_quantity": 1,
+    "sold_quantity": 1,
+    "sale_terms": [],
+    "buying_mode": "buy_it_now",
+    "listing_type_id": "gold_special",
+    "start_time": "2017-05-27T15:36:10.000Z",
+    "stop_time": "2037-05-22T15:36:10.000Z",
+    "condition": "used",
+    "permalink":
+      "https://articulo.mercadolibre.com.ar/MLA-668027142-ipod-touch-5ta-generacion-32-gb-nuevo--_JM",
+    "thumbnail":
+      "http://mla-s1-p.mlstatic.com/211325-MLA25414844678_032017-I.jpg",
+    "secure_thumbnail":
+      "https://mla-s1-p.mlstatic.com/211325-MLA25414844678_032017-I.jpg",
+    "pictures": [
+      {
+        "id": "211325-MLA25414844678_032017",
+        "url":
+          "http://mla-s1-p.mlstatic.com/211325-MLA25414844678_032017-O.jpg",
+        "secure_url":
+          "https://mla-s1-p.mlstatic.com/211325-MLA25414844678_032017-O.jpg",
+        "size": "375x500",
+        "max_size": "900x1200",
+        "quality": ""
+      },
+      {
+        "id": "681325-MLA25414843717_032017",
+        "url":
+          "http://mla-s1-p.mlstatic.com/681325-MLA25414843717_032017-O.jpg",
+        "secure_url":
+          "https://mla-s1-p.mlstatic.com/681325-MLA25414843717_032017-O.jpg",
+        "size": "375x500",
+        "max_size": "900x1200",
+        "quality": ""
+      },
+      {
+        "id": "230325-MLA25414843768_032017",
+        "url":
+          "http://mla-s1-p.mlstatic.com/230325-MLA25414843768_032017-O.jpg",
+        "secure_url":
+          "https://mla-s1-p.mlstatic.com/230325-MLA25414843768_032017-O.jpg",
+        "size": "500x375",
+        "max_size": "1200x900",
+        "quality": ""
+      },
+      {
+        "id": "947325-MLA25414852878_032017",
+        "url":
+          "http://mla-s1-p.mlstatic.com/947325-MLA25414852878_032017-O.jpg",
+        "secure_url":
+          "https://mla-s1-p.mlstatic.com/947325-MLA25414852878_032017-O.jpg",
+        "size": "375x500",
+        "max_size": "900x1200",
+        "quality": ""
+      },
+      {
+        "id": "938325-MLA25414853314_032017",
+        "url":
+          "http://mla-s1-p.mlstatic.com/938325-MLA25414853314_032017-O.jpg",
+        "secure_url":
+          "https://mla-s1-p.mlstatic.com/938325-MLA25414853314_032017-O.jpg",
+        "size": "375x500",
+        "max_size": "900x1200",
+        "quality": ""
+      },
+      {
+        "id": "644325-MLA25414852384_032017",
+        "url":
+          "http://mla-s1-p.mlstatic.com/644325-MLA25414852384_032017-O.jpg",
+        "secure_url":
+          "https://mla-s1-p.mlstatic.com/644325-MLA25414852384_032017-O.jpg",
+        "size": "375x500",
+        "max_size": "900x1200",
+        "quality": ""
+      }
+    ],
+    "video_id": null,
+    "descriptions": [
+      {
+        "id": "MLA668027142-1354208166"
+      }
+    ],
+    "accepts_mercadopago": true,
+    "non_mercado_pago_payment_methods": [],
+    "shipping": {
+      "mode": "not_specified",
+      "methods": [],
+      "tags": ["me2_available"],
+      "dimensions": null,
+      "local_pick_up": true,
+      "free_shipping": false,
+      "logistic_type": "not_specified",
+      "store_pick_up": false
+    },
+    "international_delivery_mode": "none",
+    "seller_address": {
+      "comment": "",
+      "address_line": "",
+      "zip_code": "",
+      "city": {
+        "id": "",
+        "name": "buenos aires"
+      },
+      "state": {
+        "id": "AR-C",
+        "name": "Capital Federal"
+      },
+      "country": {
+        "id": "AR",
+        "name": "Argentina"
+      },
+      "search_location": {
+        "neighborhood": {
+          "id": "",
+          "name": ""
+        },
+        "city": {
+          "id": "TUxBQ0NBUGZlZG1sYQ",
+          "name": "Capital Federal"
+        },
+        "state": {
+          "id": "TUxBUENBUGw3M2E1",
+          "name": "Capital Federal"
+        }
+      },
+      "latitude": -34.630585,
+      "longitude": -58.474876,
+      "id": 56407776
+    },
+    "seller_contact": null,
+    "location": {},
+    "geolocation": {
+      "latitude": -34.630585,
+      "longitude": -58.474876
+    },
+    "coverage_areas": [],
+    "attributes": [
+      {
+        "id": "BRAND",
+        "name": "Marca",
+        "value_id": null,
+        "value_name": "Apple",
+        "value_struct": null,
+        "attribute_group_id": "OTHERS",
+        "attribute_group_name": "Otros"
+      },
+      {
+        "id": "MODEL",
+        "name": "Modelo",
+        "value_id": null,
+        "value_name": "Ipod Touch",
+        "value_struct": null,
+        "attribute_group_id": "OTHERS",
+        "attribute_group_name": "Otros"
+      }
+    ],
+    "warnings": [],
+    "listing_source": "",
+    "variations": [],
+    "status": "active",
+    "sub_status": [],
+    "tags": [
+      "good_quality_picture",
+      "dragged_bids_and_visits",
+      "immediate_payment"
+    ],
+    "warranty": null,
+    "catalog_product_id": null,
+    "domain_id": null,
+    "parent_item_id": "MLA656710977",
+    "differential_pricing": null,
+    "deal_ids": [],
+    "automatic_relist": false,
+    "date_created": "2017-05-27T15:36:10.000Z",
+    "last_updated": "2018-08-02T21:11:00.000Z",
+    "health": null
+  }
+}

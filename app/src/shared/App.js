@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import SearchBox from './components/SearchBox/SearchBox';
-import Routes from './routes';
+import Routes from './App.routes';
 
 const App = (props) => {
     return (

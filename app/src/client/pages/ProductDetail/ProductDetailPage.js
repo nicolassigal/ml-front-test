@@ -1,6 +1,6 @@
 import React from 'react';
 import BreadCrumb from 'Shared/components/BreadCrumb/BreadCrumb';
-import { getCurrencySymbol, getCondition } from 'Shared/utils';
+import { getCurrencySymbol, getCondition } from 'Shared/Utils/utils';
 
 const ProductsListPage = props => {
     let view = null;
@@ -10,11 +10,11 @@ const ProductsListPage = props => {
         let sold_label = null;
         let condition_label = null;
 
-        if(condition_es) {
+        if(condition_es.length) {
             condition_label = (<span>{condition_es}</span>);
         }
 
-        if(sold_quantity) {
+        if(sold_quantity > 0) {
             if(sold_quantity > 1) {
                 sold_label = (<span>{sold_quantity} vendidos</span>);
             } else {
@@ -39,7 +39,7 @@ const ProductsListPage = props => {
         )
     }
 
-    if(props) {
+    if(props.item) {
         const { item, categories } = props;
         view = (
             <div className="product-detail">

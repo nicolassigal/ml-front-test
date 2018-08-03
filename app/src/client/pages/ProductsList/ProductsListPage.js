@@ -5,7 +5,7 @@ import ProductRow from 'Shared/components/ProductRow/ProductRow';
 const ProductsListPage = props => {
     let view = null;
 
-    if(props) {
+    if(props.items) {
         const { categories, items } = props;
         view = (
             <div className="products-list">
@@ -16,7 +16,7 @@ const ProductsListPage = props => {
                     <div className="row">
                         <div className="product-workspace">
                             <ul className="products-list__items">
-                                { items ? items.map(item => <ProductRow key={item.id} item={item} />) : null }
+                                { items.map(item => <ProductRow key={item.id} item={item} />) }
                             </ul>
                         </div>
                     </div>

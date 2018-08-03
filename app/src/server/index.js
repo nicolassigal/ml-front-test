@@ -3,7 +3,7 @@ import React from 'react';
 import renderer from './helpers/renderer';
 import cors from 'cors';
 import axios from 'axios';
-import { getCurrencySymbol } from 'Shared/utils';
+import { getCurrencySymbol } from 'Shared/Utils/utils';
         
 const API_ENDPOINT = 'http://localhost:3200/api';
 const port = process.env.port || 5000;

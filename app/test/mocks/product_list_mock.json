@@ -1,0 +1,62 @@
+{
+    "author": "Nicolas Sigal",
+    "categories": [
+      "Celulares y Teléfonos",
+      "Celulares y Smartphones",
+      "iPhone"
+    ],
+    "items": [
+      {
+        "id": "MLA682627325",
+        "title": "Celular Liberado Iphone 6 32 Gb Space Grey",
+        "price": {
+          "currency": "ARS",
+          "amount": "16.999",
+          "decimals": 0
+        },
+        "condition": "new",
+        "free_shipping": false,
+        "state": "Capital Federal",
+        "picture": "http://mla-s2-p.mlstatic.com/967347-MLA25979285510_092017-I.jpg"
+      },
+      {
+        "id": "MLA672160044",
+        "title": "Celular Libre Apple Iphone 6 Gris 32gb",
+        "price": {
+          "currency": "ARS",
+          "amount": "17.999",
+          "decimals": 0
+        },
+        "condition": "new",
+        "free_shipping": false,
+        "state": "Capital Federal",
+        "picture": "http://mla-s1-p.mlstatic.com/736895-MLA25705832447_062017-I.jpg"
+      },
+      {
+        "id": "MLA642392962",
+        "title": "Iphone 6 16gb Apple Pantalla Retina Hd + Templado De Regalo",
+        "price": {
+          "currency": "ARS",
+          "amount": "13.989",
+          "decimals": 99
+        },
+        "condition": "new",
+        "free_shipping": true,
+        "state": "Capital Federal",
+        "picture": "http://mla-s1-p.mlstatic.com/255115-MLA25158148033_112016-I.jpg"
+      },
+      {
+        "id": "MLA695166154",
+        "title": "Iphone 8 Apple 64gb Plus 4g 4k Sellado Garantia 1 Año!",
+        "price": {
+          "currency": "ARS",
+          "amount": "35.479",
+          "decimals": 0
+        },
+        "condition": "new",
+        "free_shipping": true,
+        "state": "Capital Federal",
+        "picture": "http://mla-s1-p.mlstatic.com/959557-MLA26196391188_102017-I.jpg"
+      }
+    ]
+  }

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const BreadCrumb = (props) => {
-
     const getItems = () => {
         const { categories } = props;
     return (categories.map((category, i) => {
@@ -28,7 +27,7 @@ const BreadCrumb = (props) => {
     return (
         <div className="breadcrumb">
             <ul>
-                { getItems() }
+                { props.categories ? getItems() : null }
             </ul>
         </div>
     );

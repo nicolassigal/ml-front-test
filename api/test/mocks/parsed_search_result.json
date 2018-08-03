@@ -1,0 +1,64 @@
+{
+  "author": "Nicolas Sigal",
+  "categories": [
+    "Electrónica, Audio y Video",
+    "Audio",
+    "Audio Portátil y Radios",
+    "iPod",
+    "Reproductores"
+  ],
+  "items": [
+    {
+      "id": "MLA668027142",
+      "title": "Ipod Touch 5ta Generación 32 Gb, Nuevo !!!",
+      "price": {
+        "currency": "ARS",
+        "amount": "5.400",
+        "decimals": 0
+      },
+      "condition": "used",
+      "free_shipping": false,
+      "state": "Capital Federal",
+      "picture": "http://mla-s1-p.mlstatic.com/211325-MLA25414844678_032017-I.jpg"
+    },
+    {
+      "id": "MLA706206025",
+      "title": "Ipod Nano 6ta Generación Repuesto",
+      "price": {
+        "currency": "ARS",
+        "amount": "850",
+        "decimals": 0
+      },
+      "condition": "used",
+      "free_shipping": true,
+      "state": "Capital Federal",
+      "picture": "http://mla-s2-p.mlstatic.com/932919-MLA26652755669_012018-I.jpg"
+    },
+    {
+      "id": "MLA687434138",
+      "title": "Apple Ipod Touch 32gb 6ta Gen Nuevos - Directo Importador",
+      "price": {
+        "currency": "ARS",
+        "amount": "11.000",
+        "decimals": 0
+      },
+      "condition": "new",
+      "free_shipping": true,
+      "state": "Capital Federal",
+      "picture": "http://mla-s1-p.mlstatic.com/649329-MLA26020098943_092017-I.jpg"
+    },
+    {
+      "id": "MLA722399504",
+      "title": "Ipod Touch 5g Para Respuesto + Earpods + Caja + Cable Datos",
+      "price": {
+        "currency": "ARS",
+        "amount": "1.200",
+        "decimals": 0
+      },
+      "condition": "used",
+      "free_shipping": false,
+      "state": "Buenos Aires",
+      "picture": "http://mla-s1-p.mlstatic.com/826196-MLA27279398059_052018-I.jpg"
+    }
+  ]
+}

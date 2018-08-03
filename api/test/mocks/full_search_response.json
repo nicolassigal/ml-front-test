@@ -1,0 +1,861 @@
+{
+  "status": 200,
+  "data": {
+    "site_id": "MLA",
+    "query": "apple ipod",
+    "paging": {
+      "total": 462,
+      "offset": 0,
+      "limit": 4,
+      "primary_results": 462
+    },
+    "results": [
+      {
+        "id": "MLA668027142",
+        "site_id": "MLA",
+        "title": "Ipod Touch 5ta Generación 32 Gb, Nuevo !!!",
+        "seller": {
+          "id": 93965185,
+          "power_seller_status": null,
+          "car_dealer": false,
+          "real_estate_agency": false,
+          "tags": []
+        },
+        "price": 5400,
+        "currency_id": "ARS",
+        "available_quantity": 1,
+        "sold_quantity": 1,
+        "buying_mode": "buy_it_now",
+        "listing_type_id": "gold_special",
+        "stop_time": "2037-05-22T15:36:10.000Z",
+        "condition": "used",
+        "permalink":
+          "https://articulo.mercadolibre.com.ar/MLA-668027142-ipod-touch-5ta-generacion-32-gb-nuevo--_JM",
+        "thumbnail":
+          "http://mla-s1-p.mlstatic.com/211325-MLA25414844678_032017-I.jpg",
+        "accepts_mercadopago": true,
+        "installments": {
+          "quantity": 12,
+          "amount": 689.58,
+          "rate": 53.24,
+          "currency_id": "ARS"
+        },
+        "address": {
+          "state_id": "AR-C",
+          "state_name": "Capital Federal",
+          "city_id": "",
+          "city_name": "buenos aires"
+        },
+        "shipping": {
+          "free_shipping": false,
+          "mode": "not_specified",
+          "tags": [],
+          "logistic_type": "not_specified"
+        },
+        "seller_address": {
+          "id": "",
+          "comment": "",
+          "address_line": "",
+          "zip_code": "",
+          "country": {
+            "id": "AR",
+            "name": "Argentina"
+          },
+          "state": {
+            "id": "AR-C",
+            "name": "Capital Federal"
+          },
+          "city": {
+            "id": "",
+            "name": "buenos aires"
+          },
+          "latitude": "",
+          "longitude": ""
+        },
+        "attributes": [
+          {
+            "attribute_group_name": "Otros",
+            "source": 1577,
+            "id": "BRAND",
+            "name": "Marca",
+            "value_id": null,
+            "value_name": "Apple",
+            "value_struct": null,
+            "attribute_group_id": "OTHERS"
+          },
+          {
+            "value_struct": null,
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros",
+            "source": 1577,
+            "id": "MODEL",
+            "name": "Modelo",
+            "value_id": null,
+            "value_name": "Ipod Touch"
+          }
+        ],
+        "original_price": null,
+        "category_id": "MLA43718",
+        "official_store_id": null,
+        "catalog_product_id": null,
+        "reviews": {},
+        "tags": [
+          "good_quality_picture",
+          "dragged_bids_and_visits",
+          "immediate_payment"
+        ]
+      },
+      {
+        "id": "MLA706206025",
+        "site_id": "MLA",
+        "title": "Ipod Nano 6ta Generación Repuesto",
+        "seller": {
+          "id": 48625773,
+          "power_seller_status": null,
+          "car_dealer": false,
+          "real_estate_agency": false,
+          "tags": []
+        },
+        "price": 850,
+        "currency_id": "ARS",
+        "available_quantity": 1,
+        "sold_quantity": 0,
+        "buying_mode": "buy_it_now",
+        "listing_type_id": "gold_special",
+        "stop_time": "2038-02-08T16:53:25.000Z",
+        "condition": "used",
+        "permalink":
+          "https://articulo.mercadolibre.com.ar/MLA-706206025-ipod-nano-6ta-generacion-repuesto-_JM",
+        "thumbnail":
+          "http://mla-s2-p.mlstatic.com/932919-MLA26652755669_012018-I.jpg",
+        "accepts_mercadopago": true,
+        "installments": {
+          "quantity": 12,
+          "amount": 108.55,
+          "rate": 53.24,
+          "currency_id": "ARS"
+        },
+        "address": {
+          "state_id": "AR-C",
+          "state_name": "Capital Federal",
+          "city_id": "TUxBQk7a0TcwOTRa",
+          "city_name": "Núñez"
+        },
+        "shipping": {
+          "free_shipping": true,
+          "mode": "me2",
+          "tags": [],
+          "logistic_type": "drop_off"
+        },
+        "seller_address": {
+          "id": "",
+          "comment": "",
+          "address_line": "",
+          "zip_code": "",
+          "country": {
+            "id": "AR",
+            "name": "Argentina"
+          },
+          "state": {
+            "id": "AR-C",
+            "name": "Capital Federal"
+          },
+          "city": {
+            "id": "TUxBQk7a0TcwOTRa",
+            "name": "Núñez"
+          },
+          "latitude": "",
+          "longitude": ""
+        },
+        "attributes": [
+          {
+            "source": 1572,
+            "id": "BRAND",
+            "name": "Marca",
+            "value_id": null,
+            "value_name": "Apple",
+            "value_struct": null,
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+          },
+          {
+            "name": "Condición del ítem",
+            "value_id": "2230581",
+            "value_name": "Usado",
+            "value_struct": null,
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros",
+            "source": 1,
+            "id": "ITEM_CONDITION"
+          }
+        ],
+        "original_price": null,
+        "category_id": "MLA12674",
+        "official_store_id": null,
+        "catalog_product_id": null,
+        "reviews": {},
+        "tags": ["immediate_payment", "cart_eligible"]
+      },
+      {
+        "id": "MLA687434138",
+        "site_id": "MLA",
+        "title": "Apple Ipod Touch 32gb 6ta Gen Nuevos - Directo Importador",
+        "seller": {
+          "id": 5276693,
+          "power_seller_status": "gold",
+          "car_dealer": false,
+          "real_estate_agency": false,
+          "tags": []
+        },
+        "price": 11000,
+        "currency_id": "ARS",
+        "available_quantity": 1,
+        "sold_quantity": 25,
+        "buying_mode": "buy_it_now",
+        "listing_type_id": "gold_special",
+        "stop_time": "2037-10-08T14:23:37.000Z",
+        "condition": "new",
+        "permalink":
+          "https://articulo.mercadolibre.com.ar/MLA-687434138-apple-ipod-touch-32gb-6ta-gen-nuevos-directo-importador-_JM",
+        "thumbnail":
+          "http://mla-s1-p.mlstatic.com/649329-MLA26020098943_092017-I.jpg",
+        "accepts_mercadopago": true,
+        "installments": {
+          "quantity": 12,
+          "amount": 1404.7,
+          "rate": 53.24,
+          "currency_id": "ARS"
+        },
+        "address": {
+          "state_id": "AR-C",
+          "state_name": "Capital Federal",
+          "city_id": "TUxBQlZJTDcwOTla",
+          "city_name": "Villa Urquiza"
+        },
+        "shipping": {
+          "free_shipping": true,
+          "mode": "me2",
+          "tags": [],
+          "logistic_type": "drop_off"
+        },
+        "seller_address": {
+          "id": "",
+          "comment": "",
+          "address_line": "",
+          "zip_code": "",
+          "country": {
+            "id": "AR",
+            "name": "Argentina"
+          },
+          "state": {
+            "id": "AR-C",
+            "name": "Capital Federal"
+          },
+          "city": {
+            "id": "TUxBQlZJTDcwOTla",
+            "name": "Villa Urquiza"
+          },
+          "latitude": "",
+          "longitude": ""
+        },
+        "attributes": [
+          {
+            "value_id": null,
+            "value_name": "Apple",
+            "value_struct": null,
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros",
+            "source": 17405550362297,
+            "id": "BRAND",
+            "name": "Marca"
+          },
+          {
+            "value_struct": null,
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros",
+            "source": 1,
+            "id": "ITEM_CONDITION",
+            "name": "Condición del ítem",
+            "value_id": "2230284",
+            "value_name": "Nuevo"
+          },
+          {
+            "source": 17405550362297,
+            "id": "MODEL",
+            "name": "Modelo",
+            "value_id": null,
+            "value_name": "Ipod touch 32gb 6ta gen",
+            "value_struct": null,
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+          }
+        ],
+        "original_price": null,
+        "category_id": "MLA32614",
+        "official_store_id": null,
+        "catalog_product_id": null,
+        "reviews": {
+          "rating_average": 5,
+          "total": 1
+        },
+        "tags": [
+          "brand_verified",
+          "unknown_quality_picture",
+          "immediate_payment",
+          "cart_eligible"
+        ]
+      },
+      {
+        "id": "MLA722399504",
+        "site_id": "MLA",
+        "title": "Ipod Touch 5g Para Respuesto + Earpods + Caja + Cable Datos",
+        "seller": {
+          "id": 33601277,
+          "power_seller_status": null,
+          "car_dealer": false,
+          "real_estate_agency": false,
+          "tags": []
+        },
+        "price": 1200,
+        "currency_id": "ARS",
+        "available_quantity": 1,
+        "sold_quantity": 0,
+        "buying_mode": "buy_it_now",
+        "listing_type_id": "gold_special",
+        "stop_time": "2038-04-26T22:03:05.000Z",
+        "condition": "used",
+        "permalink":
+          "https://articulo.mercadolibre.com.ar/MLA-722399504-ipod-touch-5g-para-respuesto-earpods-caja-cable-datos-_JM",
+        "thumbnail":
+          "http://mla-s1-p.mlstatic.com/826196-MLA27279398059_052018-I.jpg",
+        "accepts_mercadopago": true,
+        "installments": {
+          "quantity": 12,
+          "amount": 153.24,
+          "rate": 53.24,
+          "currency_id": "ARS"
+        },
+        "address": {
+          "state_id": "AR-B",
+          "state_name": "Buenos Aires",
+          "city_id": "TUxBQ0xPTWMwNjk3",
+          "city_name": "Lomas de Zamora"
+        },
+        "shipping": {
+          "free_shipping": false,
+          "mode": "not_specified",
+          "tags": [],
+          "logistic_type": "not_specified"
+        },
+        "seller_address": {
+          "id": "",
+          "comment": "",
+          "address_line": "",
+          "zip_code": "",
+          "country": {
+            "id": "AR",
+            "name": "Argentina"
+          },
+          "state": {
+            "id": "AR-B",
+            "name": "Buenos Aires"
+          },
+          "city": {
+            "id": "TUxBQ0xPTWMwNjk3",
+            "name": "Lomas de Zamora"
+          },
+          "latitude": "",
+          "longitude": ""
+        },
+        "attributes": [
+          {
+            "source": 1572,
+            "id": "BRAND",
+            "name": "Marca",
+            "value_id": null,
+            "value_name": "Apple",
+            "value_struct": null,
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+          },
+          {
+            "attribute_group_name": "Otros",
+            "source": 1572,
+            "id": "ITEM_CONDITION",
+            "name": "Condición del ítem",
+            "value_id": "2230581",
+            "value_name": "Usado",
+            "value_struct": null,
+            "attribute_group_id": "OTHERS"
+          },
+          {
+            "value_struct": null,
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros",
+            "source": 1572,
+            "id": "MODEL",
+            "name": "Modelo",
+            "value_id": null,
+            "value_name": "Ipod touch"
+          }
+        ],
+        "original_price": null,
+        "category_id": "MLA43718",
+        "official_store_id": null,
+        "catalog_product_id": null,
+        "reviews": {},
+        "tags": ["immediate_payment"]
+      }
+    ],
+    "secondary_results": [],
+    "related_results": [],
+    "sort": {
+      "id": "relevance",
+      "name": "More relevant"
+    },
+    "available_sorts": [
+      {
+        "id": "price_asc",
+        "name": "Lower price"
+      },
+      {
+        "id": "price_desc",
+        "name": "Higher price"
+      }
+    ],
+    "filters": [
+      {
+        "id": "category",
+        "name": "Categories",
+        "type": "text",
+        "values": [
+          {
+            "id": "MLA7262",
+            "name": "Reproductores",
+            "path_from_root": [
+              {
+                "id": "MLA1000",
+                "name": "Electrónica, Audio y Video"
+              },
+              {
+                "id": "MLA409810",
+                "name": "Audio"
+              },
+              {
+                "id": "MLA1012",
+                "name": "Audio Portátil y Radios"
+              },
+              {
+                "id": "MLA6205",
+                "name": "iPod"
+              },
+              {
+                "id": "MLA7262",
+                "name": "Reproductores"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "available_filters": [
+      {
+        "id": "9997262-AMLA_7262_1",
+        "name": "Modelo",
+        "type": "text",
+        "values": [
+          {
+            "id": "9997262-AMLA_7262_1-MMLA6838",
+            "name": "iPod touch",
+            "results": 315
+          },
+          {
+            "id": "9997262-AMLA_7262_1-MMLA244",
+            "name": "iPod nano",
+            "results": 69
+          },
+          {
+            "id": "9997262-AMLA_7262_1-MMLA245",
+            "name": "iPod shuffle",
+            "results": 43
+          },
+          {
+            "id": "9997262-AMLA_7262_1-MMLA3917",
+            "name": "iPod classic",
+            "results": 10
+          },
+          {
+            "id": "9997262-AMLA_7262_1-MMLA246",
+            "name": "iPod video",
+            "results": 5
+          },
+          {
+            "id": "9997262-AMLA_7262_1-MMLA243",
+            "name": "iPod mini",
+            "results": 2
+          },
+          {
+            "id": "9997262-AMLA_7262_1-MMLA242",
+            "name": "iPod e iPod photo",
+            "results": 1
+          },
+          {
+            "id": "9997262-AMLA_7262_1-MMLA241",
+            "name": "Otros",
+            "results": 17
+          }
+        ]
+      },
+      {
+        "id": "9997262-AMLA_7262_2",
+        "name": "Capacidad",
+        "type": "text",
+        "values": [
+          {
+            "id": "9997262-AMLA_7262_2-MMLA10627",
+            "name": "32 GB",
+            "results": 148
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA13556",
+            "name": "16 GB",
+            "results": 110
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA259",
+            "name": "8 GB",
+            "results": 86
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA250",
+            "name": "2 GB",
+            "results": 33
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA27092",
+            "name": "64 GB",
+            "results": 30
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA253",
+            "name": "4 GB",
+            "results": 10
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA247",
+            "name": "1 GB",
+            "results": 9
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA252",
+            "name": "30 GB",
+            "results": 5
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA3964",
+            "name": "160 GB",
+            "results": 5
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA13554",
+            "name": "120 GB",
+            "results": 3
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA257",
+            "name": "6 GB",
+            "results": 2
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA260",
+            "name": "80 GB",
+            "results": 2
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA248",
+            "name": "10 GB",
+            "results": 1
+          },
+          {
+            "id": "9997262-AMLA_7262_2-MMLA256",
+            "name": "512 MB",
+            "results": 1
+          }
+        ]
+      },
+      {
+        "id": "state",
+        "name": "Location",
+        "type": "text",
+        "values": [
+          {
+            "id": "TUxBUENBUGw3M2E1",
+            "name": "Capital Federal",
+            "results": 228
+          },
+          {
+            "id": "TUxBUEdSQWU4ZDkz",
+            "name": "Bs.As. G.B.A. Norte",
+            "results": 39
+          },
+          {
+            "id": "TUxBUEdSQXJlMDNm",
+            "name": "Bs.As. G.B.A. Sur",
+            "results": 36
+          },
+          {
+            "id": "TUxBUEdSQWVmNTVm",
+            "name": "Bs.As. G.B.A. Oeste",
+            "results": 26
+          },
+          {
+            "id": "TUxBUFpPTmFpbnRl",
+            "name": "Buenos Aires Interior",
+            "results": 18
+          },
+          {
+            "id": "TUxBUFNBTmU5Nzk2",
+            "name": "Santa Fe",
+            "results": 16
+          },
+          {
+            "id": "TUxBUENPUmFkZGIw",
+            "name": "Córdoba",
+            "results": 14
+          },
+          {
+            "id": "TUxBUE1FTmE5OWQ4",
+            "name": "Mendoza",
+            "results": 9
+          },
+          {
+            "id": "TUxBUENPU2ExMmFkMw",
+            "name": "Bs.As. Costa Atlántica",
+            "results": 6
+          },
+          {
+            "id": "TUxBUFLNT29iZmZm",
+            "name": "Río Negro",
+            "results": 4
+          },
+          {
+            "id": "TUxBUENIQW8xMTNhOA",
+            "name": "Chaco",
+            "results": 3
+          },
+          {
+            "id": "TUxBUE5FVW4xMzMzNQ",
+            "name": "Neuquén",
+            "results": 2
+          },
+          {
+            "id": "TUxBUExBWmE1OWMy",
+            "name": "La Pampa",
+            "results": 2
+          },
+          {
+            "id": "TUxBUEVOVHMzNTdm",
+            "name": "Entre Ríos",
+            "results": 1
+          },
+          {
+            "id": "TUxBUExBWmEyNzY0",
+            "name": "La Rioja",
+            "results": 1
+          },
+          {
+            "id": "TUxBUFNBTGFjMTJi",
+            "name": "Salta",
+            "results": 1
+          },
+          {
+            "id": "TUxBUFNBTm5lYjU4",
+            "name": "San Juan",
+            "results": 1
+          },
+          {
+            "id": "TUxBUFRVQ244NmM3",
+            "name": "Tucumán",
+            "results": 1
+          }
+        ]
+      },
+      {
+        "id": "price",
+        "name": "Precio",
+        "type": "range",
+        "values": [
+          {
+            "id": "*-1000.0",
+            "name": "Up to $1.000",
+            "results": 76
+          },
+          {
+            "id": "1000.0-3000.0",
+            "name": "$1.000 to $3.000",
+            "results": 220
+          },
+          {
+            "id": "3000.0-*",
+            "name": "More than $3.000",
+            "results": 166
+          }
+        ]
+      },
+      {
+        "id": "accepts_mercadopago",
+        "name": "MercadoPago filter",
+        "type": "boolean",
+        "values": [
+          {
+            "id": "yes",
+            "name": "With MercadoPago",
+            "results": 462
+          }
+        ]
+      },
+      {
+        "id": "installments",
+        "name": "Pago",
+        "type": "text",
+        "values": [
+          {
+            "id": "yes",
+            "name": "Installments",
+            "results": 460
+          },
+          {
+            "id": "no_interest",
+            "name": "Sin interés",
+            "results": 70
+          }
+        ]
+      },
+      {
+        "id": "condition",
+        "name": "Condición",
+        "type": "text",
+        "values": [
+          {
+            "id": "new",
+            "name": "New",
+            "results": 74
+          },
+          {
+            "id": "used",
+            "name": "Used",
+            "results": 388
+          }
+        ]
+      },
+      {
+        "id": "shipping",
+        "name": "Envío",
+        "type": "text",
+        "values": [
+          {
+            "id": "mercadoenvios",
+            "name": "Mercado Envíos",
+            "results": 278
+          }
+        ]
+      },
+      {
+        "id": "power_seller",
+        "name": "Seller quality filter",
+        "type": "boolean",
+        "values": [
+          {
+            "id": "yes",
+            "name": "Best sellers",
+            "results": 11
+          }
+        ]
+      },
+      {
+        "id": "buying_mode",
+        "name": "Buying mode filter",
+        "type": "text",
+        "values": [
+          {
+            "id": "buy_it_now",
+            "name": "Buy it now",
+            "results": 462
+          }
+        ]
+      },
+      {
+        "id": "since",
+        "name": "Auction start date filter",
+        "type": "text",
+        "values": [
+          {
+            "id": "today",
+            "name": "Publicados hoy",
+            "results": 5
+          }
+        ]
+      },
+      {
+        "id": "until",
+        "name": "Auction stop filter",
+        "type": "text",
+        "values": [
+          {
+            "id": "today",
+            "name": "Ending today",
+            "results": 3
+          }
+        ]
+      },
+      {
+        "id": "has_video",
+        "name": "Video publications filter",
+        "type": "boolean",
+        "values": [
+          {
+            "id": "yes",
+            "name": "Publications with video",
+            "results": 14
+          }
+        ]
+      },
+      {
+        "id": "has_pictures",
+        "name": "Items with images filter",
+        "type": "boolean",
+        "values": [
+          {
+            "id": "yes",
+            "name": "With pictures",
+            "results": 459
+          }
+        ]
+      },
+      {
+        "id": "product",
+        "name": "Product",
+        "type": "text",
+        "values": [
+          {
+            "id": "MLA6210399",
+            "name": "Samsung Galaxy S7",
+            "results": 1
+          }
+        ]
+      },
+      {
+        "id": "shipping_cost",
+        "name": "Costo de envío",
+        "type": "text",
+        "values": [
+          {
+            "id": "free",
+            "name": "Gratis",
+            "results": 45
+          }
+        ]
+      }
+    ]
+  }
+}

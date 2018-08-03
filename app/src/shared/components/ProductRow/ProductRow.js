@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCurrencySymbol } from '../../../shared/utils';
+import { getCurrencySymbol } from '../../../shared/Utils/utils';
 
 const ProductRow = (props) => {
     const { item } = props;
@@ -22,30 +22,35 @@ const ProductRow = (props) => {
         }
     }
 
-    return (
-        <li className="product-row row">
-            <a className="product-thumbnail" href={`/items/${item.id}`}>
-                <img src={item.picture} alt={item.title} />
-            </a>
-            <div className="product-info">
-                <div className="row">
-                    <div className="product-info__title">
-                        <span> { getCurrencySymbol(item.price.currency) } { item.price.amount }</span>
-                        { getDecimals(item.price) }
-                        { checkShipping() }
+    let view = null;
+    if (item) {
+        view = (
+            <li className="product-row row">
+                <a className="product-thumbnail" href={`/items/${item.id}`}>
+                    <img src={item.picture} alt={item.title} />
+                </a>
+                <div className="product-info">
+                    <div className="row">
+                        <div className="product-info__title">
+                            <span> { getCurrencySymbol(item.price.currency) } { item.price.amount }</span>
+                            { getDecimals(item.price) }
+                            { checkShipping() }
+                        </div>
+                        <div className="product-info__state">
+                            <span>{item.state}</span>
+                        </div>
                     </div>
-                    <div className="product-info__state">
-                        <span>{item.state}</span>
+                    <div className="row">
+                        <div className="product-info__description">
+                            <a href={`/items/${item.id}`}>{item.title}</a> 
+                        </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="product-info__description">
-                        <a href={`/items/${item.id}`}>{item.title}</a> 
-                    </div>
-                </div>
-            </div>
-        </li>
-    );
+            </li>
+        );
+    }
+
+    return view;
 }
 
 export default ProductRow;
