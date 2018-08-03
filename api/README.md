@@ -5,15 +5,29 @@
 
 ## Build
 
-### para correr en modo producción
+para correr en modo producción
 
 ```
 npm start
 ```
 
-### para correr en modo development
+para correr en modo development
 ```
-npm run watch
+npm run dev
+```
+
+## Test
+
+Para correr test 
+
+```
+npm test
+```
+
+Para correr test con coverage 
+
+```
+npm run coverage
 ```
 
 ## Autor
