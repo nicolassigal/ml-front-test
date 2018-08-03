@@ -1,4 +1,4 @@
-# ml-front-test 
+# mercado libre front-end test 
 ## Cliente y Render Server
 
 ## Stack Tecnológico: 
@@ -9,15 +9,30 @@
 
 ## Build
 
-### para correr en modo producción
+ para correr en modo producción
 
 ```
-npm run prod
+npm start
 ```
 
-### para correr en modo development
+ para correr en modo development
+
 ```
 npm run dev
+```
+
+## Test
+
+ para correr test
+
+```
+npm test
+```
+
+ para correr tests con coverage
+
+```
+npm run coverage
 ```
 
 ## Autor
