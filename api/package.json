@@ -8,7 +8,7 @@
     "coverage": "jest --config=./jest.config.json --coverage",
     "prebuild": "npm install",
     "start": "npm run prebuild && node start.js",
-    "watch": "npm run prebuild && nodemon start.js"
+    "dev": "npm run prebuild && nodemon start.js"
   },
   "author": "Nicolas Sigal",
   "license": "ISC",

@@ -33,8 +33,10 @@ const ProductsListPage = props => {
         const currency_symbol = getCurrencySymbol(currency);
         return(
             <div className="caption-amount">
-                <span>{currency_symbol} {amount}</span>
-                { decimals ? <sup>{decimals}</sup> : null }
+                <h2>
+                    <span>{currency_symbol} {amount}</span>
+                    { decimals ? <sup>{decimals}</sup> : null }
+                </h2>
             </div>
         )
     }
