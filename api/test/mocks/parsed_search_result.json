@@ -19,7 +19,7 @@
       "condition": "used",
       "free_shipping": false,
       "state": "Capital Federal",
-      "picture": "http://mla-s1-p.mlstatic.com/211325-MLA25414844678_032017-I.jpg"
+      "picture": "http://mla-s1-p.mlstatic.com/211325-MLA25414844678_032017-V.jpg"
     },
     {
       "id": "MLA706206025",
@@ -32,7 +32,7 @@
       "condition": "used",
       "free_shipping": true,
       "state": "Capital Federal",
-      "picture": "http://mla-s2-p.mlstatic.com/932919-MLA26652755669_012018-I.jpg"
+      "picture": "http://mla-s2-p.mlstatic.com/932919-MLA26652755669_012018-V.jpg"
     },
     {
       "id": "MLA687434138",
@@ -45,7 +45,7 @@
       "condition": "new",
       "free_shipping": true,
       "state": "Capital Federal",
-      "picture": "http://mla-s1-p.mlstatic.com/649329-MLA26020098943_092017-I.jpg"
+      "picture": "http://mla-s1-p.mlstatic.com/649329-MLA26020098943_092017-V.jpg"
     },
     {
       "id": "MLA722399504",
@@ -58,7 +58,7 @@
       "condition": "used",
       "free_shipping": false,
       "state": "Buenos Aires",
-      "picture": "http://mla-s1-p.mlstatic.com/826196-MLA27279398059_052018-I.jpg"
+      "picture": "http://mla-s1-p.mlstatic.com/826196-MLA27279398059_052018-V.jpg"
     }
   ]
 }
