@@ -42,7 +42,10 @@ router.get('/items/:id', (req, res) => {
         const html = renderer(req, response.data, title);
         res.send(html);
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+            const html = renderer(req, {}, 'Mercado Libre Argentina - Dónde comprar y vender de todo');
+            res.send(html);
+    });
 });
 
 router.get('*', (req, res) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import BreadCrumb from 'Shared/components/BreadCrumb/BreadCrumb';
 import { getCurrencySymbol, getCondition } from 'Shared/Utils/utils';
-
+import NotFoundPage from './../NotFoundPage/NotFoundPage';
 const ProductsListPage = props => {
     let view = null;
 
@@ -89,6 +89,10 @@ const ProductsListPage = props => {
                 </div>
             </div>
         );
+    } else {
+        view = (
+            <NotFoundPage />
+        )
     }
 
     return view;

@@ -10,10 +10,10 @@ const app = express(),
 
 router.get('/items', (req, res) => {
     const query = req.query.q || '',
-        options = {params: { q: query, limit: 4 }};
+        options = { params: { q: query, limit: 4 } };
     axios.get(api_config.ML_SEARCH_API, options)
         .then(response => {
-            if(response.status === 200){
+            if (response.status === 200) {
                 let { data } = response;
                 res.json(parseSearch(data));
             }
@@ -25,15 +25,20 @@ router.get('/items/:id', (req, res) => {
         axios.get(`${api_config.ML_ITEMS_API}/${req.params.id}`).catch(e => e),
         axios.get(`${api_config.ML_ITEMS_API}/${req.params.id}/description`).catch(e => e)
     ];
-    
+
     Promise.all(requests).then(([itemResponse, descriptionResponse]) => {
-        if(itemResponse.data.category_id) {
-            axios.get(`${api_config.ML_CATEGORY_API}/${itemResponse.data.category_id}`)
-            .then(categoryResponse =>  res.json(getItemResponse(itemResponse, descriptionResponse, categoryResponse)))
-            .catch(error =>  res.json(getItemResponse(itemResponse, descriptionResponse, {})));
+        if (itemResponse.status === 200) {
+            if (itemResponse.data.category_id) {
+                axios.get(`${api_config.ML_CATEGORY_API}/${itemResponse.data.category_id}`)
+                    .then(categoryResponse => res.json(getItemResponse(itemResponse, descriptionResponse, categoryResponse)))
+                    .catch(error => res.json(getItemResponse(itemResponse, descriptionResponse, {})));
+            } else {
+                res.json(getItemResponse(itemResponse, descriptionResponse, {}));
+            }
         } else {
-            res.json(getItemResponse(itemResponse, descriptionResponse, {}));
+            res.status(404).send('not found');
         }
+
     });
 });
 

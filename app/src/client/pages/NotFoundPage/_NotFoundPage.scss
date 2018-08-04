@@ -1,0 +1,13 @@
+.not-found {
+    height: calc(100vh - #{$navbar-height});
+    width: 100%;
+    background: white;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    a {
+        color: $ml-color-grey;
+        text-decoration: none;
+    }
+}

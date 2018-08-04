@@ -1,11 +1,12 @@
 import React from 'react';
 import BreadCrumb from 'Shared/components/BreadCrumb/BreadCrumb';
 import ProductRow from 'Shared/components/ProductRow/ProductRow';
+import ItemNotFound from 'Shared/components/ItemNotFound/ItemNotFound';
 
 const ProductsListPage = props => {
     let view = null;
 
-    if(props.items) {
+    if(props.items && props.items.length) {
         const { categories, items } = props;
         view = (
             <div className="products-list">
@@ -23,6 +24,8 @@ const ProductsListPage = props => {
                 </div>
             </div>
         );
+    } else {
+        view = (<ItemNotFound />)
     }
 
     return view;
