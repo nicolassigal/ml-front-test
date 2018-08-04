@@ -51,7 +51,15 @@ function Item (item, descriptionResponse = {}, query) {
     this.free_shipping = item.shipping.free_shipping;
     if (query === QUERY_SEARCH) {
         this.state = item.address.state_name;  
-        this.picture = item.thumbnail;
+        /**
+         * Se toma la decisión de cambiar este caracter en la url de las imágenes
+         * para traer las imagenes de tamaño 320 x 320 y de esa manera lograr una mejor
+         * calidad en la lista. se toma en cuenta que esta solución es temporal y corre con el
+         * riesgo de que cambie la definición de la API De imágenes y esto no escale muy bien, pero
+         * se prefiere el riesgo antes de realizar 3 llamadas a otras API's para conseguir la imagen,
+         * que para los fines prácticos del ejercicio se considera suficiente.
+         */
+        this.picture = item.thumbnail.replace('-I', '-V');
     }
     if (query === QUERY_ITEM) {
         this.sold_quantity = Number(item.sold_quantity);

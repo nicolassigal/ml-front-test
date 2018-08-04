@@ -15,7 +15,9 @@ router.get('/items', (req, res) => {
         .then(response => {
             if (response.status === 200) {
                 let { data } = response;
-                res.json(parseSearch(data));
+                let fetchItems = [];
+                data = parseSearch(data);
+                res.json(data);
             }
         }).catch(error => res.json(error));
 });

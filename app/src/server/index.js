@@ -11,12 +11,12 @@ const app = express();
 const router = express.Router();
 app.use(express.static('public'));
 
-router.get('/', (req, res) => {
+router.get('/', ( req, res, next) => {
     const html = renderer(req, { searchQuery: '' }, 'Mercado Libre Argentina');
     res.send(html);
 });
 
-router.get('/items', (req, res) => {
+router.get('/items', ( req, res, next) => {
     const query = req.query.q || '';
     axios.get(`${API_ENDPOINT}/items?q=${query}`)
     .then(response => {
@@ -30,7 +30,7 @@ router.get('/items', (req, res) => {
     .catch(err => console.log(err));
 });
 
-router.get('/items/:id', (req, res) => {
+router.get('/items/:id', ( req, res, next) => {
     const id = req.params.id || '';
     axios.get(`${API_ENDPOINT}/items/${id}`)
     .then(response => {
@@ -48,7 +48,7 @@ router.get('/items/:id', (req, res) => {
     });
 });
 
-router.get('*', (req, res) => {
+router.get( '*', (req, res, next) => {
     const data = { searchQuery: '' };
     const html = renderer(req, data, 'Mercado Libre Argentina - Dónde comprar y vender de todo');
     res.send(html);

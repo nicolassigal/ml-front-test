@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
-import ItemNotFound from './ItemNotFound';
+import NoResults from './NoResults';
 
 describe('Item not found Component', () => {
   it('Should render correctly', () => {
     const tree = renderer
-      .create(<ItemNotFound />)
+      .create(<NoResults />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

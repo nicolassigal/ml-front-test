@@ -1,13 +1,13 @@
-import React from 'React';
+import React from 'react';
 
-const ItemNotFound = () => {
+const NoResults = () => {
     return (
-        <div className="item-not-found">
+        <div className="no-results">
             <div className="container">
                 <div className="row">
                     <div className="product-workspace">
                         <div className="row">
-                            <div className="item-not-found__icon">
+                            <div className="no-results__icon">
                                 <svg className="svg-zrp-search" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
                                     <g fill="none" fillRule="evenodd">
                                         <path d="M37.891 50.705c4.584-1.85 8.61-5.256 11.216-9.957m2.764-9.071c.456-5.499-1.142-10.977-4.48-15.29a21.276 21.276 0 0 0-6.53-5.599c-5.845-3.24-12.566-3.444-18.403-1.139-4.65 1.836-8.739 5.265-11.375 10.022a22.488 22.488 0 0 0-2.832 10.308 22.102 22.102 0 0 0 3.058 11.86 21.288 21.288 0 0 0 8.02 7.79 21.275 21.275 0 0 0 8.427 2.594 21.853 21.853 0 0 0 10.135-1.518" stroke="#484848" strokeLinecap="round"></path>
@@ -40,4 +40,4 @@ const ItemNotFound = () => {
     )
 }
 
-export default ItemNotFound;
+export default NoResults;

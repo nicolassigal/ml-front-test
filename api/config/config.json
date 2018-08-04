@@ -1,5 +1,6 @@
 {
     "ML_SEARCH_API": "https://api.mercadolibre.com/sites/MLA/search",
     "ML_ITEMS_API": "https://api.mercadolibre.com/items",
-    "ML_CATEGORY_API": "https://api.mercadolibre.com/categories"
+    "ML_CATEGORY_API": "https://api.mercadolibre.com/categories",
+    "ML_PICTURES_API": "https://api.mercadolibre.com/pictures"
 }

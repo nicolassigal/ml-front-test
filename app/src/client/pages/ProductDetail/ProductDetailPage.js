@@ -89,6 +89,7 @@ const ProductsListPage = props => {
                 </div>
             </div>
         );
+        
     } else {
         view = (
             <NotFoundPage />

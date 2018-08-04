@@ -1,7 +1,7 @@
 import React from 'react';
 import BreadCrumb from 'Shared/components/BreadCrumb/BreadCrumb';
 import ProductRow from 'Shared/components/ProductRow/ProductRow';
-import ItemNotFound from 'Shared/components/ItemNotFound/ItemNotFound';
+import NoResults from 'Shared/components/NoResults/NoResults';
 
 const ProductsListPage = props => {
     let view = null;
@@ -25,7 +25,7 @@ const ProductsListPage = props => {
             </div>
         );
     } else {
-        view = (<ItemNotFound />)
+        view = (<NoResults />)
     }
 
     return view;
