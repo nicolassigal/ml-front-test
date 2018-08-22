@@ -19,7 +19,7 @@ Para estilos se utilizo sass, y para un grid system no es necesario hoy en día 
 
 Todo el proyecto cliente es transpilado y optimizado por medio de webpack y babel con loaders.
 
-Aunque cada proyecto es generado de manera independiente para no ser dependientes, los comandos para correr cada proyectos son iguales:
+Aunque cada proyecto es generado de manera independiente, los comandos para correr cada proyectos son iguales:
 
 Para correr el proyecto en modo Prod:
 ```
